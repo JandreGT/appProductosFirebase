@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" padding>
+    <ion-buttons start showWhen="android" class="flex_menu">
+      <button ion-button icon-only (click)="mostrarMenu()">
+        <ion-icon name="menu" color="blanco"></ion-icon>
+      </button>
+      <ion-title>Ajustes</ion-title>
+    </ion-buttons>
+
+    <ion-buttons start showWhen="ios">
+      <button ion-button icon-only (click)="mostrarMenu()">
+        <ion-icon name="menu" color="blanco"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title showWhen="ios">Ajustes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="ed-container full">
+    <div class="ed-item s-100">
+      <div class="ico_usuarios">
+        Lista de Usuarios
+      </div>
+    </div>
+  </div>
+</ion-content>

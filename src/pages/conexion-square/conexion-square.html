@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true" padding>
+    <div class="container__butonhead">
+      <ion-buttons start>
+        <button ion-button icon-only (click)="mostrarMenu()">
+          <ion-icon name="menu" color="rojo"></ion-icon>
+        </button>
+      </ion-buttons>
+
+      <!-- <ion-title>Conecta tu POS</ion-title> -->
+
+      <ion-buttons end>
+        <button ion-button color="rojo" outline navPop>Regresar</button>
+      </ion-buttons>
+    </div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-item *ngIf="finVenta">
+    <button type="button" ion-button block class="btn_conectar" (click)="showCardPos()">Continuar</button>
+    <div class="tarjeta_container" *ngIf="acepTarjeta">
+      <div class="gif_tarjeta"></div>
+    </div>
+  </ion-item>
+
+  <div class="container_firma" [hidden]="!modelCard">
+    <div class="firma_item">
+      <signature-pad [options]="signaturePadOptions" id="signatureCanvas"></signature-pad>
+    </div>
+
+    <div class="container_buttonsfirma">
+      <button ion-button (click)="clearFirma()" class="btn_borrar">Borrar</button>
+      <button type="button" ion-button class="btn_faceptar" (click)="enviarVentaPos()">Aceptar</button>
+    </div>
+  </div>
+</ion-content>

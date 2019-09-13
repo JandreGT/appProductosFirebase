@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar padding></ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg_square">
+  <form class="form_cobro" (ngSubmit)="cobrar(formPago)" #formPago="ngForm">
+    <ion-item>
+      <ion-select *ngIf="bancosEmpresa" cancelText="Cancelar" class="btn_modena" name="monedaselec" [(ngModel)]="pago.monedaselec" interface="action-sheet">
+        <ion-option *ngIf="monedaGTQ" value="GTQ">GTQ</ion-option>
+        <ion-option *ngIf="monedaUSD" value="USD">USD</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="input_container">
+      <ion-input type="text" pattern="^\d*(\.\d{0,2})?$" inputmode="numeric" step="any" min="1" maxlength="10" class="input_pagalo" readonly placeholder="00.00" name="montoInput" [(ngModel)]="pago.montoInput" required></ion-input>
+    </ion-item>
+
+    <div class="ed-container full teclado_container">
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('1')">1</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('2')">2</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado sbrigth" (click)="concatStr('3')">3</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('4')">4</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('5')">5</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado sbrigth" (click)="concatStr('6')">6</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('7')">7</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('8')">8</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado sbrigth" (click)="concatStr('9')">9</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <button type="button" [disabled]="existePunto" class="btn_teclado" (click)="concatStr('.')">.</button>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="concatStr('0')">0</div>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado sbrigth">
+          <div class="ico_borrar" (click)="borrarStr()"></div>
+        </div>
+      </div>
+      <!-- elimine esta clase bnone_item -->
+      <div class="ed-item s-1-3 spi spd">
+        <div class="btn_teclado" (click)="borrarStrT()">C</div>
+      </div>
+      <div class="ed-item s-2-3 spd spi">
+        <div class="btn_teclado btn_cobrar sbrigth ed-item main-center cross-center">
+          <button type="submit" [disabled]="!bancosEmpresa" ion-button block>Cobrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>

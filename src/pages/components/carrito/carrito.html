@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title color="blanco">Mi Carrito</ion-title>
+    <div class="ico_cerrar" (click)="closeModal()"></div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center class="carrito_vacio" *ngIf="_ps.carrito.length === 0">
+    <ion-icon name="ios-cart-outline" class="ico_5x"></ion-icon>
+    <br>
+    Su carrito esta vació
+  </div>
+
+  <div class="ed-container full" *ngIf="_ps.carrito.length > 0">
+    <div class="ed-item ed-container full spi spd mtop_items" *ngFor="let producto of _ps.carrito">
+      <div class="ed-item s-35 spi">
+        <div class="carrito_image">
+          <img *ngIf="producto.imagen != ''" [src]="producto.imagen">
+          <div class="bg_imageprod" *ngIf="producto.imagen == ''"> {{ producto.nombre | slice:0:1 }} </div>
+        </div>
+      </div>
+
+      <div class="ed-item s-65 spd">
+        <div class="carrito_body">
+          <div class="carrito_title">
+            <p> {{ producto.nombre }} </p>
+          </div>
+          <div class="carrito_price">
+            <p>Q {{ producto.precio }} x <b> {{ producto.cantidadProducto }} </b> </p>
+          </div>
+          <div class="contaner_buttons">
+            <div class="container_formproducto">
+              <div class="btn_menos" (click)="eliminarProducto(producto)"></div>
+              <p> {{ producto.cantidadProducto }} </p>
+              <div class="btn_mas" (click)="agregarProducto(producto)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="container_total">
+    <p>Q  {{_ps.totalVenta | number:'.2-2'}}</p>
+    <button *ngIf="_ps.carrito.length > 0" ion-button class="btn_continuar"
+            (click)="enviarProductos(_ps.carrito, _ps.totalVenta)">Continuar</button>
+  </div>
+</ion-footer>

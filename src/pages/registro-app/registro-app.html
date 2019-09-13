@@ -1,0 +1,253 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons right>
+      <button ion-button outline class="btn_salir" (click)="loguout()">Salir</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="radius_box">
+    <div class="ico_pagalo"></div>
+  </div>
+
+  <div class="container_box">
+    <div class="box_registro">
+      <ion-slides pager>
+        <ion-slide>
+          <h1>Cambiar Contraseña</h1>
+          <p class="sub_titulo">Primera entrada al sistema, cambia tu contraseña a una mas segura.</p>
+
+          <form class="form_registro" #passUsuario="ngForm" (ngSubmit)="changePass(passUsuario)">
+            <label class="label_registro">Nueva Contraseña:</label>
+            <ion-item class="spd spi">
+              <ion-input type="password" class="input_registro" autocorrect="off" name="passUser" #passUser="ngModel"
+                [(ngModel)]="password.nueva" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$" minlength="8" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="passUser.dirty && passUser?.errors?.required">
+              <p>Contraseña requerida.</p>
+            </div>
+            <div class="alert_box" *ngIf="passUser?.errors?.minlength">
+              <p>Un mínico de 8 caracteres.</p>
+            </div>
+            <div class="alert_box" *ngIf="passUser?.errors?.pattern">
+              <p>Que contengan al menos una letra mayúscula, una letra minúscula y un número.</p>
+            </div>
+
+            <label class="label_registro">Confirma Contraseña:</label>
+            <ion-item class="spd spi">
+              <ion-input type="password" class="input_registro" autocorrect="off" name="passConfirm" #passConfirm="ngModel"
+                [(ngModel)]="password.confirmar" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="passConfirm.dirty && passConfirm?.errors?.required">
+              <p>Confirmación requerida</p>
+            </div>
+
+            <div class="center_button">
+              <button ion-button class="btn_registroc mtop_bntc" [disabled]="passUsuario.invalid" type="submit">Cambiar</button>
+            </div>
+          </form>
+        </ion-slide>
+
+        <ion-slide>
+          <h1>Tus Datos</h1>
+          <p class="sub_titulo">Toda tu información está protegida así que no te preocupes.</p>
+
+          <form class="form_registro" #datosUsuario="ngForm" (ngSubmit)="DataUser(datosUsuario)">
+            <label class="label_registro" *ngIf="!dpiImage">Fotografía de tú DPI:</label>
+            <label class="label_registro succes_color" *ngIf="dpiImage">DPI enviado exitosaménte</label>
+            <div class="ed-container full" *ngIf="!dpiImage">
+              <div class="ed-item s-50" *ngIf="imagePreview == ''">
+                <div class="ico_foto" (click)="getImage()"></div>
+                <p>Tomar foto</p>
+              </div>
+
+              <div class="ed-item s-50" *ngIf="imagePreview == ''">
+                <div class="ico_subir" (click)="getGallery()"></div>
+                <p>Subir Foto</p>
+              </div>
+
+              <div class="ed-item s-100 main-center" *ngIf="imagePreview != ''">
+                <img [src]="imagePreview" class="img_preview">
+              </div>
+
+              <div class="ed-item s-50" *ngIf="imagePreview != ''">
+                <div class="center_button">
+                  <button ion-button class="btn_cancelimg" type="button" (click)="cancelUpload()">Cancelar</button>
+                </div>
+              </div>
+
+              <div class="ed-item s-50" *ngIf="imagePreview != ''">
+                <div class="center_button">
+                  <button ion-button class="btn_registroc" type="button" (click)="enviarDPI()">Subir</button>
+                </div>
+              </div>
+            </div>
+
+            <label class="label_registro">Mi número de DPI es:</label>
+            <ion-item class="spd spi">
+              <ion-input type="tel" class="input_registro" autocorrect="off" name="dpiUser" #dpiUser="ngModel"
+                        [(ngModel)]="user.dpiUser" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="dpiUser.dirty && dpiUser?.errors?.required">
+              <p>DPI requerido</p>
+            </div>
+
+            <label class="label_registro">País:</label>
+            <ion-item class="container_selet">
+              <ion-label>País</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" placeholder="País..." name="paisUser" #paisUser="ngModel"
+                          [(ngModel)]="user.paisUser" required>
+                <ion-option *ngFor="let pais of paises" [value]="pais.name">
+                  {{ pais.name }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+            <div class="alert_box" *ngIf="paisUser.dirty && paisUser?.errors?.required">
+              <p>País requerido</p>
+            </div>
+
+            <label class="label_registro">Dirección:</label>
+            <ion-item class="spd spi">
+              <ion-input type="text" class="input_registro" autocorrect="on" name="direccionUser" #direccionUser="ngModel"
+                          [(ngModel)]="user.direccionUser" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="direccionUser.dirty && direccionUser?.errors?.required">
+              <p>Dirección requerida</p>
+            </div>
+
+            <label class="label_registro">Ciudad:</label>
+            <ion-item class="spd spi">
+              <ion-input type="text" class="input_registro" autocorrect="on" name="ciudadUser" #ciudadUser="ngModel"
+                [(ngModel)]="user.ciudadUser" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="ciudadUser.dirty && ciudadUser?.errors?.required">
+              <p>Ciudad requerida</p>
+            </div>
+
+            <div class="center_button">
+              <button ion-button class="btn_registroc mtop_bntc" [disabled]="datosUsuario.invalid" type="submit">Continuar</button>
+            </div>
+          </form>
+        </ion-slide>
+
+        <ion-slide>
+          <h1>Datos de Negocio</h1>
+          <p class="sub_titulo">Toda tu información está protegida así que no te preocupes.</p>
+
+          <form class="form_registro" #datosNegocio="ngForm" (ngSubmit)="tranUser(datosNegocio)">
+            <label class="label_registro" *ngIf="!rtuImage">Fotografía de tú RTU:</label>
+            <label class="label_registro succes_color" *ngIf="rtuImage">RTU enviado exitosaménte</label>
+            <div class="ed-container full" *ngIf="!rtuImage">
+              <div class="ed-item s-50" *ngIf="imagePreview == ''">
+                <div class="ico_foto" (click)="getImage()"></div>
+                <p>Tomar foto</p>
+              </div>
+
+              <div class="ed-item s-50" *ngIf="imagePreview == ''">
+                <div class="ico_subir" (click)="getGallery()"></div>
+                <p>Subir Foto</p>
+              </div>
+
+              <div class="ed-item s-100 main-center" *ngIf="imagePreview != ''">
+                <img [src]="imagePreview" class="img_preview">
+              </div>
+
+              <div class="ed-item s-50" *ngIf="imagePreview != ''">
+                <div class="center_button">
+                  <button ion-button class="btn_cancelimg" type="button" (click)="cancelUpload()">Cancelar</button>
+                </div>
+              </div>
+
+              <div class="ed-item s-50" *ngIf="imagePreview != ''">
+                <div class="center_button">
+                  <button ion-button class="btn_registroc" type="button" (click)="enviarRTU()">Subir</button>
+                </div>
+              </div>
+            </div>
+
+            <label class="label_registro">¿Cuanto vas a transaccionar?</label>
+            <ion-item class="spd spi">
+              <ion-input type="tel" class="input_registro" autocorrect="of" name="transaccionEmpresa" #transaccionEmpresa="ngModel"
+                [(ngModel)]="empresa.transaccionEmpresa" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="transaccionEmpresa.dirty && transaccionEmpresa?.errors?.required">
+              <p>Monto transacción requerido</p>
+            </div>
+
+            <div class="center_button">
+              <button ion-button class="btn_registroc mtop_bntc" [disabled]="datosNegocio.invalid" type="submit">Continuar</button>
+            </div>
+          </form>
+        </ion-slide>
+
+        <ion-slide>
+          <h1>Datos de Deposito</h1>
+          <p class="sub_titulo">Toda tu información está protegida así que no te preocupes.</p>
+          <form class="form_registro" #datosBanco="ngForm" (ngSubmit)="bancoUser(datosBanco)">
+            <label class="label_registro">Banco:</label>
+            <ion-item class="container_selet">
+              <ion-label>Banco</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" placeholder="Banco..." name="nBancoEmpresa" #nBancoEmpresa="ngModel"
+                          [(ngModel)]="user.nBancoUser" required>
+                <ion-option *ngFor="let banco of bancos" [value]="banco.nombre">
+                  {{ banco.nombre }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+
+            <label class="label_registro">Nombre de la cuenta:</label>
+            <ion-item class="spd spi">
+              <ion-input type="text" class="input_registro" autocorrect="on" name="cuentaEmpresa" #cuentaEmpresa="ngModel"
+                [(ngModel)]="empresa.cuentaEmpresa" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="cuentaEmpresa.dirty && cuentaEmpresa?.errors?.required">
+              <p>Nombre de la cuenta requerido.</p>
+            </div>
+
+            <label class="label_registro">Número de cuenta:</label>
+            <ion-item class="spd spi">
+              <ion-input type="tel" class="input_registro" autocorrect="of" name="noCuentaEmpresa" #noCuentaEmpresa="ngModel"
+                [(ngModel)]="empresa.noCuentaEmpresa" required></ion-input>
+            </ion-item>
+            <div class="alert_box" *ngIf="noCuentaEmpresa.dirty && noCuentaEmpresa?.errors?.required">
+              <p>Número de cuenta requerido.</p>
+            </div>
+
+            <label class="label_registro">Mi cuenta es:</label>
+            <ion-item class="container_selet">
+              <ion-label>Tipo Cuenta</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" placeholder="Tipo Cuenta..." name="tipoCuentaEmpresa" #tipoCuentaEmpresa="ngModel" [(ngModel)]="empresa.tipoCuentaEmpresa" required>
+                <ion-option *ngFor="let cuenta of tipoCuenta" [value]="cuenta.name">
+                  {{ cuenta.name }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+
+            <label class="label_registro">Moneda:</label>
+            <ion-item class="container_selet">
+              <ion-label>Moneda</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" placeholder="Moneda..." name="monedaEmpresa"
+                #monedaEmpresa="ngModel" [(ngModel)]="empresa.monedaEmpresa" required>
+                <ion-option *ngFor="let moneda of monedas" [value]="moneda.value">
+                  {{ moneda.name }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+
+            <div class="center_button">
+              <button ion-button class="btn_registroc mtop_bntc" [disabled]="datosBanco.invalid" type="submit">Continuar</button>
+            </div>
+          </form>
+        </ion-slide>
+
+        <ion-slide>
+          <h1>Gracias por terminar tu registro</h1>
+          <p class="sub_titulo">Espera 24 horas para que tu cuenta PAGALO se active.</p>
+          <div class="ico_espera"></div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

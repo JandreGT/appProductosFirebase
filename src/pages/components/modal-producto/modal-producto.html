@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle Producto</ion-title>
+    <div class="ico_cerrar" (click)="closeModal()"></div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="ed-container full">
+    <div class="ed-item ed-container full spi spd mtop_items">
+      <div class="ed-item s-100 spi spd">
+        <div class="carrito_image">
+          <img *ngIf="existeProducto.imagen != ''" [src]="existeProducto.imagen">
+          <div class="bg_imageprod" *ngIf="existeProducto.imagen == ''"> {{ existeProducto.nombre | slice:0:1 }} </div>
+        </div>
+      </div>
+
+      <div class="ed-item s-100 spi spd">
+        <div class="carrito_body">
+          <div class="carrito_title">
+            <p>{{ existeProducto.nombre }}</p>
+            <p class="stock" *ngIf="existeProducto.ac_stock === 1">Stock: {{ existeProducto.stock }} </p>
+          </div>
+          <div class="carrito_price">
+            <p>Q {{existeProducto.precio | number:'.2-2'}}</p>
+          </div>
+
+          <div class="carrito_descripcion">
+            <p>{{existeProducto.descripcion}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="contaner_buttons">
+    <div class="container_formproducto">
+      <div class="btn_menos" (click)="eliminarProducto(existeProducto)"></div>
+      <p> {{ existeProducto.cantidadProducto }} </p>
+      <div class="btn_mas" (click)="agregarProducto(existeProducto)"></div>
+    </div>
+  </div>
+</ion-footer>

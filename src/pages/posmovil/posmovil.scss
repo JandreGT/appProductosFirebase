@@ -1,0 +1,244 @@
+page-posmovil {
+
+  .monto {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 10px;
+  }
+
+  .input_pago {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    margin-top: 0;
+  }
+
+  .input_pago.ng-invalid.ng-touched {
+    border: 1px dashed color($colors,rojo);
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: normal;
+    font-family: $source;
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+
+  .form_container {
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card_container{
+    float: left;
+    width: 95%;
+    padding: 20px 10px 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+
+    label {
+      float: left;
+      width: 100%;
+      display: block;
+      font-size: 14px;
+      color: #454545;
+      margin-bottom: 0;
+      padding-left: 15px;
+    }
+
+    .input_pago{
+      background: #fff !important;
+      border-radius: 8px !important;
+      border: 1px solid #454545 !important;
+      color: #454545 !important;
+      padding: 2px;
+      margin-bottom: 10px;
+
+        .text-input {
+          text-align: center !important;
+        }
+    }
+
+    .btn_container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+        .btn_pago{
+          background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+          color: #fff;
+          font-weight: 600;
+          width: 75%;
+        }
+    }
+  }
+
+  .item-block {
+    padding: 10px !important;
+
+    .label {
+      margin: 0 !important;
+    }
+  }
+
+  .no_padding {
+    padding-top: 0 !important;
+  }
+
+  .input_cvv {
+    margin-top: 0 !important;
+    height: 50px !important;
+  }
+
+  .input_date {
+    ion-datetime {
+      float: left !important;
+      width: 100% !important;
+      height: 50px !important;
+      margin: 0 !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .datetime-text {
+        flex: none !important;
+      }
+    }
+  }
+
+  .btn_conectar {
+    float: left;
+    width: 100%;
+    font-size: 20px !important;
+    font-family: $source !important;
+    font-weight: 600 !important;
+    height: 40px !important;
+    background: color($colors,primary);
+    color: #fff;
+  }
+
+  .container_scan {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+      p {
+        float: left;
+        width: 100%;
+        text-align: center;
+        color: #999;
+        font-size: 18px;
+      }
+
+      .btn_nuevo {
+        float: left;
+        width: 40%;
+        background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+        color: #fff;
+        font-size: 15px;
+        height: 40px;
+        border-radius: 5px;
+      }
+
+      .btn_scan {
+        float: left;
+        width: 70%;
+        background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+        color: #fff;
+        font-size: 18px;
+        height: 50px;
+        border-radius: 5px;
+      }
+  }
+
+  .line_separator {
+    margin: 10px 0;
+    float: left;
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ff643e 0%, #fa4537 100%);
+  }
+
+  .list_clientesnpos {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    border-top: 1px dashed #999;
+    max-height: 225px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      background-color: #ccc;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: linear-gradient(to right, #5477f0 0%, #6c64ee 100%);
+    }
+
+    .border_item {
+      padding: 10px 0;
+      border-bottom: 1px dashed #999;
+    }
+
+    .btn_scliente {
+      float: left;
+      width: 100%;
+      background: linear-gradient(to right, #5477f0 0%, #6c64ee 100%);
+      color: #fff;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 5px;
+
+        &:hover {
+          background: linear-gradient(to right, #ff6e64 0%, #ff9951 100%);
+        }
+    }
+
+    p {
+      font-size: 14px;
+      color: #000;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+  }
+
+  .container_selet {
+    padding: 0;
+
+      ion-label {
+        margin: 0;
+      }
+
+      ion-select {
+        width: 100%;
+        max-width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+      }
+  }
+}

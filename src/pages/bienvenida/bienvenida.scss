@@ -1,0 +1,126 @@
+page-bienvenida {
+
+  ion-header {
+    &::after {
+      background: none !important;
+      display: none !important;
+    }
+  }
+
+  .scroll-content {
+    padding: 0 !important;
+  }
+
+  h1 {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    color: #ff6567;
+    margin-bottom: 0;
+    line-height: 8px;
+  }
+
+  p {
+    float: left;
+    width: 100%;
+    color: #707070;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 0;
+    letter-spacing: 0.03em;
+    line-height: 10px;
+  }
+
+  .container_slide1 {
+    float: left;
+    width: 100% !important;
+    background: url('../../assets/imgs/bg-slide1.jpg') no-repeat center;
+    background-size: 101% 100%;
+    padding: 0 8px;
+
+      .ico_bienvenida {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background: url('../../assets/imgs/ico_bienvenida.svg') no-repeat center;
+        background-size: 50%;
+      }
+  }
+
+  .container_slide2 {
+    float: left;
+    width: 100% !important;
+    background: url('../../assets/imgs/bg-slide2.jpg') no-repeat center;
+    background-size: 101% 100%;
+    padding: 0 8px;
+
+      .ico_solib {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background: url('../../assets/imgs/ico_solib.svg') no-repeat center;
+        background-size: 50%;
+      }
+  }
+
+  .container_slide3 {
+    float: left;
+    width: 100% !important;
+    background: url('../../assets/imgs/bg-slide3.jpg') no-repeat center;
+    background-size: 101% 100%;
+    padding: 0 8px;
+
+      .ico_qrb {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background: url('../../assets/imgs/ico_qrb.svg') no-repeat center;
+        background-size: 50%;
+      }
+  }
+
+  .container_slide4 {
+    float: left;
+    width: 100% !important;
+    background: url('../../assets/imgs/bg-slide4.jpg') no-repeat center;
+    background-size: 101% 100%;
+    padding: 0 8px;
+
+      .ico_prodb {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background: url('../../assets/imgs/ico_prodb.svg') no-repeat center;
+        background-size: 50%;
+      }
+  }
+
+  .ceter_buttonlogin {
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn_slidelogin {
+    float: left;
+    width: 45%;
+    font-size: 20px !important;
+    font-family: $source !important;
+    font-weight: 400 !important;
+    color: #fff;
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+    margin-top: 15px;
+    box-shadow: none !important;
+    padding: .6em 1.2em;
+    border-radius: 4px;
+    text-transform: none;
+
+    &:hover {
+      background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+      color: #fff;
+    }
+  }
+}

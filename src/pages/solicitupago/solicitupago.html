@@ -1,0 +1,195 @@
+<ion-header>
+  <ion-navbar padding></ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h1 class="monto"> {{datosTran.montoTran | number:'.2-2'}} <sup>{{datosTran.moneda}}</sup></h1>
+  <div class="line_separator"></div>
+
+  <form #formCliente="ngForm" class="form_pago" (ngSubmit)="searchCliente(formCliente)" *ngIf="buscarCliente">
+    <ion-item class="spd spi">
+      <ion-input type="text" autocomplete="on" autocorrect="on" class="input_pago" placeholder="¿Quién es tu cliente?"
+        name="nombre" [(ngModel)]="busCliente.nombre" required #nombre="ngModel"></ion-input>
+    </ion-item>
+
+    <div class="container_scan">
+      <button ion-button class="btn_scan" type="submit">Buscar</button>
+    </div>
+
+    <div class="list_clientesnpos" *ngIf="encontradoCliente">
+      <div class="ed-container">
+        <div class="ed-item ed-container border_item" *ngFor="let cliente of clientes">
+          <div class="ed-item s-30 spi cross-center">
+            <div class="btn_scliente" (click)="asignarCliente(cliente)">Seleccionar</div>
+          </div>
+
+          <div class="ed-item s-40  spi cross-center">
+            <p>{{cliente.nombre}} {{cliente.apellido}}</p>
+          </div>
+
+          <div class="ed-item s-30 m-20 spd spi cross-center">
+            <p>{{cliente.telefono}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container_scan" *ngIf="encontradoCliente">
+      <p>¿No encuentras a tu cliente?</p>
+      <button ion-button class="btn_nuevo" type="button" (click)="showCrear()">Crear Nuevo</button>
+    </div>
+  </form>
+
+  <form #formcCliente="ngForm" class="form_pago" (ngSubmit)="clienteCreate(formcCliente)" *ngIf="crearClientev">
+    <ion-item class="spd spi">
+      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Nombre" name="nombre"
+        [(ngModel)]="crearCliente.nombre" required #nombre="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spd spi">
+      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Apellido" name="apellido"
+        [(ngModel)]="crearCliente.apellido" required #apellido="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spd spi">
+      <ion-input type="email" autocorrect="on" class="input_pago" placeholder="Correo" name="email"
+        [(ngModel)]="crearCliente.email" required #email="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spd spi">
+      <ion-input type="tel" autocorrect="on" class="input_pago" placeholder="Teléfono" name="telefono"
+        [(ngModel)]="crearCliente.telefono" required #telefono="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spd spi">
+      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="NIT opcional" name="nit"
+        [(ngModel)]="crearCliente.nit" #nit="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spi spd container_selet">
+      <ion-select [selectOptions]="selectOptions" okText="Ok" cancelText="Cancelar" placeholder="País..." name="pais"
+        #pais="ngModel" [(ngModel)]="crearCliente.pais" required>
+        <ion-option *ngFor="let pais of paises" [value]="pais.code">
+          {{ pais.name }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="alert_box" *ngIf="pais.dirty && pais?.errors?.required">
+      <p>País requerido</p>
+    </div>
+
+    <ion-item class="spi spd container_selet" *ngIf="crearCliente.pais =='US'">
+      <ion-select [selectOptions]="selectOptionsUC" okText="Ok" cancelText="Cancelar" placeholder="Estado US..."
+        name="estado" #estado="ngModel" [(ngModel)]="crearCliente.estado" required>
+        <ion-option *ngFor="let estadoUS of estadosUS" [value]="estadoUS.code">
+          {{ estadoUS.name }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="spi spd container_selet" *ngIf="crearCliente.pais =='CA'">
+      <ion-select [selectOptions]="selectOptionsUC" okText="Ok" cancelText="Cancelar" placeholder="Estado CA..."
+        name="estado" #estado="ngModel" [(ngModel)]="crearCliente.estado" required>
+        <ion-option *ngFor="let estadoCA of estadosCA" [value]="estadoCA.code">
+          {{ estadoCA.name }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="spd spi">
+      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Ciudad" name="ciudad"
+        [(ngModel)]="crearCliente.ciudad" required #ciudad="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spd spi" *ngIf="crearCliente.pais !='GT'">
+      <ion-input type="tel" autocorrect="on" class="input_pago" placeholder="Código Postal" name="postalCode"
+        [(ngModel)]="crearCliente.postalCode" required #postalCode="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item class="spd spi">
+      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Dirección actual" name="direccion"
+        [(ngModel)]="crearCliente.direccion" required #direccion="ngModel"></ion-input>
+    </ion-item>
+
+    <div class="container_scan">
+      <button ion-button class="btn_scan" [disabled]="formcCliente.invalid" type="submit">Guardar y continuar</button>
+    </div>
+  </form>
+
+  <form class="form_pago" (ngSubmit)="enviarSoli()" #formCliente="ngForm" [hidden]="!frmShared">
+    <div *ngIf="!datosTran.ventaProducto">
+      <label>¿Qué cobras?</label>
+      <ion-item class="spd spi">
+        <ion-input type="text" class="input_pago" autocomplete="on" autocorrect="on" placeholder="Descripción" name="descripcion" [(ngModel)]="cliente.descripcion"
+          required #descripcion="ngModel"></ion-input>
+      </ion-item>
+
+      <div class="alert_box" *ngIf="descripcion.dirty && descripcion?.errors?.required">
+        <p>Descripción requerida</p>
+      </div>
+    </div>
+
+    <div class="btn_container">
+      <button ion-button class="btn_pago" [disabled]="formCliente.invalid" type="submit">Continuar</button>
+    </div>
+  </form>
+
+  <div class="contianer_buttonsshared" *ngIf="btnShared">
+    <h2>¿En dónde lo quieres enviar?</h2>
+    <div class="line_separator"></div>
+
+    <div class="ed-container full main-start cross-center">
+      <div class="ed-item s-50 main-center">
+        <div class="ico-shared ico_whats" (click)="sharedSoli(formCliente, 'wts')"></div>
+      </div>
+      <div class="ed-item s-50 main-center">
+        <div class="ico-shared ico_sms" (click)="sharedSoli(formCliente, 'sms')"></div>
+      </div>
+      <div class="ed-item s-50 main-center" showWhen="android">
+        <div class="ico-shared ico_messenger" (click)="sharedSoli(formCliente, 'mssg')"></div>
+      </div>
+      <div class="ed-item s-50 main-center">
+        <div class="ico-shared ico_mail" (click)="sharedSoli(formCliente, 'mail')"></div>
+      </div>
+      <div class="ed-item s-50 main-center">
+        <div class="ico-shared ico_shared" (click)="sharedSoli(formCliente, 'shrd')"></div>
+      </div>
+    </div>
+  </div>
+
+  <form class="form_pago" (ngSubmit)="enviarMail(formMail)" #formMail="ngForm" *ngIf="frmMail">
+    <label>Ingresa el Correo</label>
+    <ion-item class="spd spi">
+      <ion-input type="email" class="input_pago" placeholder="Correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                name="email" [(ngModel)]="cliente.email" #email="ngModel" required></ion-input>
+    </ion-item>
+
+    <div class="alert_box" *ngIf="email.dirty && email?.errors?.pattern">
+      <p>Correo invalido</p>
+    </div>
+    <div class="alert_box" *ngIf="email.dirty && email?.errors?.required">
+      <p>Correo Requerido</p>
+    </div>
+
+
+    <div class="btn_container">
+      <button ion-button class="btn_pago" [disabled]="formMail.invalid" type="submit">Enviar</button>
+    </div>
+  </form>
+
+  <div class="transaccion_container" *ngIf="irHome">
+    <h1>Realizar nueva transacción</h1>
+    <div class="btn_container">
+      <button ion-button class="btn_pago" type="button" (click)="irSquare()">Aceptar</button>
+    </div>
+  </div>
+
+  <div class="nuevatran_container" *ngIf="erorTran">
+    <h1>Generar Nueva Solicitud</h1>
+    <div class="btn_container">
+      <button ion-button class="btn_pago" type="button" (click)="irSquare()">Aceptar</button>
+    </div>
+  </div>
+</ion-content>

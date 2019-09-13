@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar padding></ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1 class="monto"> {{datosTran.montoTran | number:'.2-2'}} <sup>{{datosTran.moneda}}</sup></h1>
+
+  <form class="form_pago" (ngSubmit)="realizarPago(formCliente)" #formCliente="ngForm">
+    <ion-item class="spd spi">
+      <ion-input type="tel" class="input_pago" placeholder="Teléfono" pattern="^[0-9-+s()]*$" name="telefono" [(ngModel)]="cliente.telefono"
+        required #telefono="ngModel"></ion-input>
+    </ion-item>
+
+    <div class="alert_box" *ngIf="telefono.dirty && telefono?.errors?.required">
+      <p>Teléfono requerido</p>
+    </div>
+
+    <div class="alert_box" *ngIf="telefono.dirty && telefono?.errors?.pattern">
+      <p>Teléfono invalido</p>
+    </div>
+
+    <ion-item class="spd spi">
+      <ion-input type="text" class="input_pago" placeholder="¿Que estoy vendiendo?" name="descripcion"
+      [(ngModel)]="cliente.descripcion" required #descripcion="ngModel"></ion-input>
+    </ion-item>
+
+    <div class="alert_box" *ngIf="descripcion.dirty && descripcion?.errors?.required">
+      <p>Descripción requerida</p>
+    </div>
+
+    <div class="line_separator"></div>
+
+    <div class="btn_container">
+      <button ion-button class="btn_pago" [disabled]="formCliente.invalid" type="submit">Conectar POS</button>
+    </div>
+  </form>
+
+  <ion-item>
+    <div class="container_icopos">
+      <div class="ico_conexion"></div>
+    </div>
+  </ion-item>
+</ion-content>

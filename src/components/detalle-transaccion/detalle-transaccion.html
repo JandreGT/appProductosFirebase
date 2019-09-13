@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title color="blanco">Detalle Transacción</ion-title>
+    <div class="ico_cerrar" (click)="closeModal()"></div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="ed-container full">
+    <div class="ed-item ed-container full spi spd header_detalle">
+      <div class="ed-item s-1-3 spi spd">
+        <p>Descripción</p>
+      </div>
+      <div class="ed-item s-1-3 spd">
+        <p>Cantidad</p>
+      </div>
+      <div class="ed-item s-1-3 spi spd">
+        <p>Precio</p>
+      </div>
+    </div>
+
+    <div class="ed-item ed-container s-100 body_detalle" *ngFor="let producto of existeTransaccion.productos">
+      <div class="ed-item s-1-3 spd spi main-start cross-start">
+        <p> {{ producto.nombre }} </p>
+      </div>
+
+      <div class="ed-item s-1-3 spd main-center cross-start">
+        <p> {{ producto.cantidad }} </p>
+      </div>
+
+      <div class="ed-item s-1-3 spd main-center cross-start">
+        <p> {{ existeTransaccion.currency }} {{ producto.precio | number:'.2-2' }} </p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="container_total">
+    <p>Total: {{ existeTransaccion.currency }} {{ existeTransaccion.Total | number:'.2-2' }}</p>
+  </div>
+</ion-footer>

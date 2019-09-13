@@ -1,0 +1,30 @@
+page-ajustes {
+  ion-title {
+    .toolbar-title {
+      color: #fff;
+    }
+  }
+
+  .ico_usuarios {
+    float: left;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 35px;
+    font-size: 18px;
+    font-weight: 400;
+    background: url('../../assets/imgs/ico-usuarios.svg') no-repeat left center;
+    background-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .flex_menu {
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

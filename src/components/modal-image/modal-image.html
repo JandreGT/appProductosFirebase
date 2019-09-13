@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title color="blanco">Personalización</ion-title>
+    <div class="ico_cerrar" (click)="closeModal()"></div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="ed-container full">
+    <div class="ed-item s-50 main-center" *ngIf="imagePreview == ''">
+      <div class="ico_foto" (click)="getImage()"></div>
+      <p>Tomar foto</p>
+    </div>
+
+    <div class="ed-item s-50 main-center" *ngIf="imagePreview == ''">
+      <div class="ico_subir" (click)="getGallery()"></div>
+      <p>Subir Foto</p>
+    </div>
+
+    <div class="ed-item s-100 main-center" *ngIf="imagePreview != ''">
+      <img [src]="imagePreview" class="img_preview">
+    </div>
+
+    <div class="ed-item s-50" *ngIf="imagePreview != ''">
+      <div class="center_button">
+        <button ion-button class="btn_cancelimg" type="button" (click)="cancelUpload()">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="ed-item s-50" *ngIf="imagePreview != ''">
+      <div class="center_button">
+        <button ion-button class="btn_registroc" type="button" (click)="uploadImage()">Subir</button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

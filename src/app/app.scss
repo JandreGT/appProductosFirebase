@@ -1,0 +1,386 @@
+$cssCore: false;
+$devMode: false;
+$cssHelpers: true;
+@import 'node_modules/ed-grid/ed-grid';
+
+body {
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.item-inner {
+  border-bottom: none !important;
+  padding: 0 !important;
+}
+
+.bg_item {
+  background: none !important;
+}
+
+.container__butonhead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spd {
+  padding-right: 0 !important;
+}
+
+.spi {
+  padding-left: 0 !important;
+}
+
+.menu_container {
+
+  .container_logom {
+    float: left;
+    width: 100%;
+    height: 150px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+      .mlogo {
+        float: left;
+        width: 100%;
+        height: 100%;
+        background: url('../assets/imgs/logo-pagalo.svg') no-repeat center;
+        background-size: 20%;
+      }
+  }
+
+
+  ion-content {
+    float: left;
+    z-index: 1000;
+    background: url('../assets/imgs/fondo-menu.png') no-repeat;
+    background-size: 160%;
+    background-position: center -15px;
+
+      .list {
+          .item-inner {
+            background: none !important;
+          }
+      }
+  }
+
+  .item-block {
+    color: #000 !important;
+    font-weight: normal;
+    font-size: 18px;
+    font-family: $source;
+    border: none !important;
+    text-align: left;
+  }
+
+  .container_menudistributy {
+    float: left;
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .items_fstart,.items_fend {
+      float: left;
+      width: 100%;
+    }
+  }
+
+  .icon {
+    padding-left: 50px !important;
+    height: 50px;
+  }
+
+  .ico_inicio {
+    float: left;
+    width: 100%;
+    background: url('../assets/imgs/ico_inicio.svg') no-repeat 15px;
+    background-size: 25px;
+  }
+
+  .ico_tran {
+    float: left;
+    width: 100%;
+    background: url('../assets/imgs/ico_tran.svg') no-repeat 15px;
+    background-size: 25px;
+  }
+
+  .ico_prod {
+    float: left;
+    width: 100%;
+    background: url('../assets/imgs/ico_productos.svg') no-repeat 15px;
+    background-size: 25px;
+  }
+
+  .ico_irdash {
+    float: left;
+    width: 100%;
+    background: url('../assets/imgs/ico-irdash.svg') no-repeat 15px;
+    background-size: 25px;
+  }
+
+  .ico_ajustes {
+    float: left;
+    width: 100%;
+    background: url('../assets/imgs/ico-ajustes.svg') no-repeat 15px;
+    background-size: 25px;
+  }
+
+  .ico_logout {
+    float: left;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/imgs/ico_salir.svg') no-repeat 15px;
+    background-size: 25px;
+  }
+}
+
+.mr_ri {
+  margin-right: 10px !important;
+}
+
+.w_treeinputs {
+  float: left;
+  width: 33.33%;
+}
+
+.alert_box {
+  float: left;
+  width: 100%;
+  background: rgba(254, 94, 61, 0.1);
+  padding: 10px;
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 2px;
+
+    p {
+      margin: 0;
+      color: #c12e20 !important;
+      text-align: left;
+      font-size: 13px !important;
+    }
+}
+
+label {
+  float: left;
+  width: 100%;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 0;
+  padding-left: 15px;
+}
+
+[hidden] {
+  display: none;
+}
+
+.bg_headerTran {
+  .toolbar-background {
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951) !important;
+    border: none !important;
+  }
+
+  .toolbar-title {
+    color: #fff !important;
+    font-size: 20px;
+  }
+}
+
+.container_respuestaAccep {
+  float: left;
+  width: 100%;
+  height: 100vh;
+  background: url('../assets/imgs/ico-accept.svg')no-repeat center -100px, linear-gradient(90deg,#ff6e64 0%,#ff9951);
+  background-size: cover;
+}
+
+.container_respuestaReject {
+  float: left;
+  width: 100%;
+  height: 100vh;
+  background: url('../assets/imgs/ico-rechazada.svg')no-repeat center -100px, linear-gradient(90deg,#ff6e64 0%,#ff9951);
+  background-size: cover;
+}
+
+signature-pad {
+  canvas {
+    border-bottom: 2px dashed #333333;
+  }
+}
+
+.container_firma {
+  float: left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+  .firma_item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.container_buttonsfirma {
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 5px;
+
+      .btn_borrar {
+        width: 200px;
+        float: left;
+        font-size: 20px !important;
+        font-family: $source !important;
+        font-weight: 600 !important;
+        height: 40px !important;
+        background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+        color: #fff;
+
+        &:hover {
+          background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+        }
+      }
+
+      .btn_faceptar {
+        width: 200px;
+        float: left;
+        font-size: 20px !important;
+        font-family: $source !important;
+        font-weight: 600 !important;
+        height: 40px !important;
+        background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+        color: #fff;
+
+        &:hover {
+          background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+        }
+      }
+}
+
+.nuevatran_container {
+  float: left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 15px;
+
+  @media (min-height: 650px) {
+    height: calc(100vh - 30vh);
+  }
+
+    h1 {
+      float: left;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn_container {
+      float: left;
+      width: 100%;
+      margin: 0 !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+        .btn_pago {
+          float: left;
+          width: 75%;
+          background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+          color: #fff;
+          font-size: 20px;
+          font-weight: bold;
+          font-family: $source;
+        }
+    }
+}
+
+.btn_snacearqrapp {
+  float: left;
+  width: 100%;
+  background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+  color: color($colors,blanco);
+
+  &:hover {
+    background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+  }
+}
+
+.toolbar-background {
+  background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+  border: none !important;
+}
+
+.back-button.show-back-button {
+  color: color($colors,blanco);
+}
+
+.btn_restran {
+  float: left;
+  width: 100%;
+  background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+  color: color($colors,blanco);
+  margin-top: 40%;
+
+  &:hover {
+    background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+  }
+}
+
+.modal-pagalo {
+
+  @media not all and (min-height: 600px) and (min-width: 768px) {
+    ion-backdrop {
+      visibility: visible;
+    }
+  }
+
+  .modal-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-top: 25%;
+  }
+}
+
+.toast-success {
+  .toast-wrapper {
+    background: linear-gradient(to right, rgba(55,181,30,1) 0%, rgba(37,222,37,1) 100%) !important;
+  }
+}
+
+.toast-danger {
+  .toast-wrapper {
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+  }
+}
+
+.toast-info {
+  .toast-wrapper {
+    background: linear-gradient(90deg,#5477f0 0%,#6c64ee) !important;
+  }
+}
+
+
+/**
+ *
+ * Hack o modificación SCSS para permitir Scroll en IOS 12
+ *
+ */
+
+ion-app.platform-ios12 ion-content {
+  pointer-events: auto;
+}
+

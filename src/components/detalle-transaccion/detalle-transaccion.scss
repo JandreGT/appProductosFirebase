@@ -1,0 +1,75 @@
+detalle-transaccion {
+  ion-navbar {
+    border-radius: 15px 15px 0 0 !important;
+
+    .toolbar-title {
+      color: #fff;
+    }
+  }
+
+  .ico_cerrar {
+    float: left;
+    width: 50px;
+    height: 35px;
+    background: url('../../assets/imgs/ico-cerrar.svg') no-repeat center;
+    background-size: 45%;
+    position: relative;
+    left: 85%;
+  }
+
+  ion-content {
+    border-radius: 15px 15px 0 0 !important;
+  }
+
+  .header_detalle {
+    float: left;
+    width: 100%;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+
+    p {
+      float: left;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #000;
+      margin: 0;
+    }
+  }
+
+  .body_detalle {
+    float: left;
+    width: 100%;
+    border-bottom: 1px dashed #eee;
+
+    p {
+      font-size: 0.1em;
+      font-size: 12px;
+      font-weight: 300;
+      color: #000;
+      margin: 10px 0 10px 5px;
+    }
+  }
+
+  ion-footer {
+    height: 200px;
+    background: #fff;
+    padding: 5px;
+    box-shadow: 2px -3px 5px 0 rgba(0, 0, 0, 0.12);
+
+      .container_total {
+        float: left;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+          p {
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+          }
+      }
+  }
+}

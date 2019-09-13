@@ -1,0 +1,246 @@
+page-solicitud-qr {
+  .monto {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .form_pago {
+    float: left;
+    width: 100%;
+
+      .input_pago {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        margin-top: 0;
+      }
+
+      .input_pago.ng-invalid.ng-touched {
+        border: 1px dashed color($colors,rojo);
+      }
+
+      .btn_container {
+        float: left;
+        width: 100%;
+        margin: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+          .btn_qr {
+            float: left;
+            width: 75%;
+            background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+            color: color($colors,blanco);
+
+            &:hover {
+              background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+            }
+          }
+      }
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: normal;
+    font-family: $source;
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+
+  .item-block {
+    padding: 10px !important;
+
+    .label {
+      margin: 0 !important;
+    }
+  }
+
+  ion-card-header {
+    padding-bottom: 0 !important;
+  }
+
+  .container_image {
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+      .image {
+        float: left;
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        border: 1px solid color($colors,negro);
+      }
+  }
+
+  .description_header {
+    float: left;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+      h1 {
+        font-size: 18px;
+        color: color($colors,negro);
+        font-weight: 500;
+        margin-bottom: 0;
+      }
+
+      p {
+        font-size: 15px;
+        color: color($colors,negro);
+        font-weight: 500;
+        margin-bottom: 0;
+        text-align: left
+      }
+  }
+
+  .container_qr {
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+      img {
+        width: 100%;
+      }
+  }
+
+  .description_footer {
+    float: left;
+    width: 100%;
+    margin-top: 0;
+
+      p {
+        float: left;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 0;
+        line-height: 18px;
+        color: color($colors,negro);
+        font-weight: 400;
+      }
+  }
+
+  .no_margin {
+    margin-right: 0;
+  }
+
+  .container_scan {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+      p {
+        float: left;
+        width: 100%;
+        text-align: center;
+        color: #999;
+        font-size: 18px;
+      }
+
+      .btn_nuevo {
+        float: left;
+        width: 40%;
+        background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+        color: #fff;
+        font-size: 15px;
+        height: 40px;
+        border-radius: 5px;
+      }
+
+      .btn_scan {
+        float: left;
+        width: 70%;
+        background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+        color: #fff;
+        font-size: 18px;
+        height: 50px;
+        border-radius: 5px;
+      }
+  }
+
+  .container_selet {
+    padding: 0;
+
+      ion-label {
+        margin: 0;
+      }
+
+      ion-select {
+        width: 100%;
+        max-width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+      }
+  }
+
+  .list_clientesnpos {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    border-top: 1px dashed #999;
+    max-height: 225px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      background-color: #ccc;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: linear-gradient(to right, #5477f0 0%, #6c64ee 100%);
+    }
+
+    .border_item {
+      padding: 10px 0;
+      border-bottom: 1px dashed #999;
+    }
+
+    .btn_scliente {
+      float: left;
+      width: 100%;
+      background: linear-gradient(to right, #5477f0 0%, #6c64ee 100%);
+      color: #fff;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 5px;
+
+        &:hover {
+          background: linear-gradient(to right, #ff6e64 0%, #ff9951 100%);
+        }
+    }
+
+    p {
+      font-size: 14px;
+      color: #000;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+}

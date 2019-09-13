@@ -1,0 +1,261 @@
+page-tienda {
+
+  .searchbar-md .searchbar-clear-icon {
+    right: 0;
+  }
+
+  .contaner_categoria_phone {
+    float: left;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+
+      .item_categoria_phone {
+        width: auto;
+        float: left;
+        flex: none;
+        padding: 10px;
+        margin: 0 5px;
+        background: #fff;
+        box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 15px;
+
+          p {
+            font-size: 15px;
+            color: #3A79F3;
+            font-weight: bold;
+            margin: 0;
+          }
+      }
+  }
+
+  ion-row {
+    margin-bottom: 10%;
+  }
+
+  .card_container {
+    float: left;
+    width: 100%;
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 10px 10px 10px 10px;
+
+      .card_header {
+        float: left;
+        width: 100%;
+        height: 150px;
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
+
+          img {
+            display: block;
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .bg_imageprod {
+            float: left;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+            color: #fff;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 35px;
+          }
+      }
+
+      .card_body {
+        float: left;
+        width: 100%;
+        margin-top: 15px;
+        padding: 0 10px;
+
+          .card_title {
+            float: left;
+            width: 100%;
+
+              p {
+                font-size: 20px;
+                font-weight: 600;
+                font-family: $source;
+                margin: 0;
+              }
+          }
+
+          .card_price {
+            float: left;
+            width: 100%;
+              p {
+                float: left;
+                width: 100%;
+                text-align: left;
+                font-size: 15px;
+                font-weight: 400;
+                color: #464646;
+                margin-top: 3px;
+              }
+          }
+
+          .contaner_buttons {
+            float: left;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+              .btn_agregar {
+                float: left;
+                width: 80%;
+                height: 35px;
+                border-radius: 15px;
+                background: linear-gradient(90deg,#5477f0 0%,#6c64ee);
+                color: #fff;
+                font-size: 15px;
+                font-weight: 400;
+
+                  &:hover {
+                    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+                  }
+              }
+
+              .container_formproducto {
+                float: left;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 5px;
+                box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.12);
+                border-radius: 5px;
+
+                .btn_menos {
+                  float: left;
+                  width: 50px;
+                  height: 30px;
+                  background: #fff url('../../assets/imgs/ico_menos.svg') no-repeat center;
+                  background-size: 20px;
+                  border-radius: 5px 0 0 5px;
+                  border: 1px solid rgba(50, 50, 93, 0.1);
+                }
+
+                p {
+                  margin: 0;
+                  float: left;
+                  width: 40px;
+                  height: 30px;
+                  line-height: 30px;
+                  text-align: center;
+                  background: #E5E5E5;
+                }
+
+                .btn_mas {
+                  float: left;
+                  width: 50px;
+                  height: 30px;
+                  background: #fff url('../../assets/imgs/ico_mas.svg') no-repeat center;
+                  background-size: 20px;
+                  border-radius: 0 5px 5px 0;
+                  border: 1px solid rgba(50, 50, 93, 0.1);
+                }
+              }
+          }
+      }
+  }
+
+  .bnt_carrito {
+    float: left;
+    width: 65%;
+    position: fixed;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 15px;
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+    color: #fff;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    .ico_carrito {
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('../../assets/imgs/ico_carrito.svg') no-repeat center;
+      background-size: 25px;
+      position: absolute;
+      left: 10px;
+    }
+
+    p {
+      color: inherit;
+      margin: 0 10px 0 5px;
+    }
+
+    .sin_margin {
+      margin: 0 !important;
+    }
+
+    .monto_carrito {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background: #fff;
+      // border-radius: 50%;
+      padding: 4px;
+      // color: #ff6e64;
+      color: #fff;
+      font-weight: bold;
+      font-size: 15px;
+    }
+  }
+
+  //TODO hack
+  ion-label {
+    margin-top: 0 !important;
+  }
+
+  ion-searchbar {
+    background: transparent !important;
+    border: none !important;
+
+    .searchbar-input-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+    }
+
+    .searchbar-search-icon {
+      top: auto !important;
+    }
+
+    .searchbar-input {
+      background: #F9F9F9 !important;
+      height: 50px !important;
+      border-radius: 15px !important;
+    }
+
+    .searchbar-clear-icon {
+      border-radius: 0 15px 15px 0 !important;
+    }
+  }
+}

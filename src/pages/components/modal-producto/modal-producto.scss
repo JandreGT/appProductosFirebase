@@ -1,0 +1,169 @@
+page-modal-producto {
+  ion-navbar {
+    border-radius: 15px 15px 0 0 !important;
+
+    .toolbar-title {
+      color: #fff;
+    }
+  }
+
+  .ico_cerrar {
+    float: left;
+    width: 50px;
+    height: 35px;
+    background: url('../../../assets/imgs/ico-cerrar.svg') no-repeat center;
+    background-size: 45%;
+    position: relative;
+    left: 85%;
+  }
+
+  ion-content {
+    border-radius: 15px 15px 0 0 !important;
+  }
+
+  .carrito_image {
+    float: left;
+    width: 100%;
+    height: 225px;
+
+      img {
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .bg_imageprod {
+        float: left;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+        color: #fff;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 35px;
+        border-radius: 5px;
+      }
+  }
+
+  .carrito_body {
+    float: left;
+    width: 100%;
+    margin-top: 15px;
+
+      .carrito_title {
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+
+          p {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: left;
+            margin: 0;
+            float: left;
+          }
+
+          p.stock {
+            font-weight: 400 !important;
+            font-size: 15px !important;
+            margin-left: 10px !important;
+            margin-top: 5px;
+          }
+      }
+
+      .carrito_price {
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+
+          p {
+            float: left;
+            font-size: 18px;
+            font-weight: 500;
+            color: #464646;
+            margin: 0;
+          }
+      }
+
+      .carrito_descripcion {
+        float: left;
+        width: 100%;
+
+          p {
+            float: left;
+            font-size: 15px;
+            font-weight: 400;
+            color: #464646;
+            margin: 0;
+            letter-spacing: 0.03em;
+            line-height: 20px;
+            text-align: left;
+          }
+      }
+  }
+
+  .contaner_buttons {
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+
+    .container_formproducto {
+      float: left;
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.12);
+      border-radius: 5px;
+
+      .btn_menos {
+        float: left;
+        width: 60px;
+        height: 45px;
+        background: #fff url('../../../assets/imgs/ico_menos.svg') no-repeat center;
+        background-size: 20px;
+        border-radius: 5px 0 0 5px;
+        border: 1px solid rgba(50, 50, 93, 0.1);
+      }
+
+      p {
+        margin: 0;
+        float: left;
+        width: 50px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        background: #E5E5E5;
+      }
+
+      .btn_mas {
+        float: left;
+        width: 60px;
+        height: 45px;
+        background: #fff url('../../../assets/imgs/ico_mas.svg') no-repeat center;
+        background-size: 20px;
+        border-radius: 0 5px 5px 0;
+        border: 1px solid rgba(50, 50, 93, 0.1);
+      }
+    }
+  }
+
+
+  ion-footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 165px;
+    background: #fff;
+    padding: 5px;
+    box-shadow: 2px -3px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+}

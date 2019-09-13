@@ -1,0 +1,180 @@
+page-registro-app {
+  .ico_pagalo {
+    float: left;
+    width: 60px;
+    height: 70px;
+    background: url('../../assets/imgs/logo-pagalo.svg') no-repeat center;
+    background-size: 75%;
+  }
+
+  .radius_box {
+    width: 100%;
+    height: 140px;
+    border-radius: 0 0 60px 60px;
+    overflow: hidden;
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .container_box {
+    float: left;
+    width: 100%;
+    padding: 0 15px;
+    position: relative;
+    top: -35px;
+  }
+
+  .box_registro {
+    float: left;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px 15px;
+
+      h1 {
+        float: left;
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        color: #ff6567;
+      }
+
+      p {
+        float: left;
+        width: 100%;
+        color: #707070;
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 3px;
+      }
+
+      p.sub_titulo {
+        float: left;
+        width: 100%;
+        color: #707070;
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0;
+        letter-spacing: 0.03em;
+        text-align: center;
+      }
+
+      .container_selet {
+        padding: 0;
+
+          ion-label {
+            margin: 0;
+          }
+
+          ion-select {
+            width: 100%;
+            max-width: 100%;
+            background: #dadada;
+            border-radius: 10px;
+          }
+      }
+  }
+
+  .form_registro {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+
+      .label_registro {
+        padding: 0;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        text-align: left;
+      }
+
+      .input_registro {
+        background: #dadada;
+        border-radius: 10px;
+        padding: 0 10px;
+      }
+  }
+
+  .ico_foto {
+    float: left;
+    width: 100%;
+    height: 45px;
+    background: url('../../assets/imgs/ico-foto.svg') no-repeat center;
+    background-size: 40%;
+  }
+
+  .ico_subir {
+    float: left;
+    width: 100%;
+    height: 45px;
+    background: url('../../assets/imgs/ico-galeria.svg') no-repeat center;
+    background-size: 40%;
+  }
+
+  .center_button {
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn_registroc {
+    float: left;
+    width: 80%;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,#5477f0 0%,#6c64ee) !important;
+  }
+
+  .btn_cancelimg {
+    float: left;
+    width: 80%;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 15px;
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951) !important;
+  }
+
+  .mtop_bntc {
+    margin-top: 15px;
+  }
+
+  .ico_espera {
+    float: left;
+    margin-top: 10%;
+    width: 100%;
+    height: 200px;
+    background: url('../../assets/imgs/ico_reloj.svg') no-repeat center;
+    background-size: 50%;
+  }
+
+  .img_preview {
+    float: left;
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .succes_color {
+    color: #6c64ee !important;
+    font-size: 18px !important;
+  }
+
+  .btn_salir {
+    float: right;
+    width: 60px;
+    border-color: #fff;
+    color: #fff;
+
+    &.activated {
+      background: #6c64ee;
+    }
+  }
+}

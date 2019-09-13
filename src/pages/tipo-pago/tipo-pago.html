@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar padding></ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="opciones_container">
+    <div class="ico_opcion">
+      <div class="ico_movil" (click)="irSinPos()"></div>
+    </div>
+    <p>Ingresar Tarjeta</p>
+
+    <div class="ico_opcion" (click)="scanTarjeta()">
+      <div class="ico_scancard"></div>
+    </div>
+    <p>Escanear Tarjeta</p>
+
+    <div class="ico_opcion h_soli">
+      <div class="ico_solicitudpago" (click)="irSoliPago()"></div>
+    </div>
+    <p>Enviar Solicitud</p>
+  </div>
+</ion-content>

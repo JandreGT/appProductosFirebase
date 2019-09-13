@@ -1,0 +1,116 @@
+page-squere {
+
+  .bg_square {
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+  }
+
+  .item-inner {
+    border: none !important;
+  }
+
+  .form_cobro {
+    float: left;
+    width: 100%;
+  }
+
+  .input_container {
+    padding: 10px 15px;
+     .item-inner {
+       padding: 0 !important;
+     }
+
+     .input_pagalo {
+       text-align: right;
+       font-size: 45px;
+       font-weight: normal;
+       color: #000;
+
+        .text-input {
+          text-align: right;
+          font-weight: normal;
+          color: #000;
+        }
+     }
+  }
+
+  .btn_modena {
+    padding: 0 0.5em;
+    height: 24px;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #488aff;
+    margin: 0.4rem 0.2rem;
+    display: flex;
+    align-items: center;
+
+    .select-icon {
+      display: none !important;
+    }
+  }
+
+
+  .teclado_container {
+    float: left;
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 0;
+    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+    margin-right: 0;
+    margin-left: 0;
+
+    @media (min-height: 650px) {
+      height: calc(100vh - 30vh);
+    }
+
+      button.btn_teclado, .btn_teclado {
+        float: left;
+        width: 100%;
+        height: 80px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 40px;
+        font-weight: 300;
+        border: 1px solid #fff;
+        border-left: none !important;
+        border-top: none !important;
+        background: transparent !important;
+
+        @media (min-height: 650px) {
+          height: 100%;
+        }
+
+          .ico_borrar {
+            float: left;
+            width: 100%;
+            height: 100%;
+            background: url('../../assets/imgs/ico-borrar.svg') no-repeat center;
+            background-size: 50%;
+          }
+      }
+
+      button[type=button].btn_teclado:disabled {
+        opacity: 1 !important;
+      }
+
+      .btn_cobrar {
+
+        button {
+          background: #fff;
+          color: #2942A9;
+        }
+      }
+
+      .sbrigth {
+        border-right: none;
+      }
+
+      .bnone_item {
+        border-bottom: none !important;
+      }
+  }
+}

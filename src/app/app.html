@@ -1,0 +1,44 @@
+<ion-menu class="menu_container" [content]="content">
+  <ion-content>
+
+    <div class="container_logom">
+      <div class="mlogo"></div>
+    </div>
+
+    <ion-list class="container_menudistributy">
+      <div class="items_fstart">
+        <button ion-item class="icon ico_inicio" *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+
+        <button ion-item class="icon ico_tran" (click)="irTran()">
+          Mis ventas
+        </button>
+
+        <button ion-item class="icon ico_prod" (click)="irProductos()">
+          Productos
+        </button>
+
+        <button ion-item class="icon ico_irdash" (click)="irPagalo()">
+          Ir a Pagalo
+        </button>
+
+        <!-- <button ion-item class="icon ico_ajustes" (click)="irAjustes()">
+          Ajustes
+        </button> -->
+
+        <button ion-item class="icon ico_ajustes" (click)="reset()">
+          Restablecer App
+        </button>
+      </div>
+
+      <div class="items_fend">
+        <button ion-item class="icon ico_logout" (click)="logout()">
+          Salir
+        </button>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>
