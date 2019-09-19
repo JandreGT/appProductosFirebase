@@ -5,7 +5,6 @@ export { PersonaPage } from './persona/persona';
 export { TipoUsuarioPage } from './tipo-usuario/tipo-usuario';
 export { BienvenidaPage } from './bienvenida/bienvenida';
 export { RegistroAppPage } from './registro-app/registro-app';
-export { RegistroPage } from './registro/registro';
 export { TipoPagoPage } from './tipo-pago/tipo-pago';
 export { ModalProductoPage } from './components/modal-producto/modal-producto';
 export { CarritoPage } from './components/carrito/carrito';

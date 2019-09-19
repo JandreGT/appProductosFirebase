@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
+
 page-home {
   .center_container {
     float: left;
@@ -16,7 +18,8 @@ page-home {
     align-items: center;
     float: left;
     width: 100%;
-    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+    background:  linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(82,82,82,1) 100%);
+    //  linear-gradient(90deg,#ff6e64 0%,#ff9951);
 
     .container_btnregistro {
       float: left;
@@ -49,6 +52,12 @@ page-home {
           background: url('../../assets/imgs/logo-pagalo.svg') no-repeat center;
           background-size: 20%;
         }
+    }
+
+    .titulo{
+      font-family: 'Open Sans Condensed', sans-serif;
+      text-align: center;
+      color: rgb(233, 233, 233);
     }
   }
 
@@ -83,6 +92,7 @@ page-home {
       font-size: 15px;
       font-family: $source;
       margin-top: 20px;
+      cursor: pointer;
     }
   }
 
@@ -95,9 +105,11 @@ page-home {
       justify-content: center;
 
         .btn_login {
-          width: 65%;
-          color: color($colors,rojo);
-          background: color($colors,blanco);
+          width: 100%;
+          margin-top: 40px;
+          color: #ff6567;
+          border-radius: 0.5rem;
+          background: #fff;
         }
 
         .btn_scanqr {

@@ -1,122 +1,39 @@
 <ion-header>
-  <ion-navbar padding></ion-navbar>
+   <ion-navbar hideBackButton="true" padding>
+      <ion-buttons start>
+         <button ion-button icon-only (click)="mostrarMenu()">
+            <ion-icon name="menu"></ion-icon>
+            Nuevo producto
+         </button>
+      </ion-buttons>
+   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <h1 class="monto"> {{datosTran.montoTran | number:'.2-2'}} <sup>{{datosTran.moneda}}</sup></h1>
-  <div class="line_separator"></div>
 
-  <form #formCliente="ngForm" class="form_pago" (ngSubmit)="searchCliente(formCliente)" *ngIf="buscarCliente">
-    <ion-item class="spd spi">
-      <ion-input type="text" autocomplete="on" autocorrect="on" class="input_pago" placeholder="¿Quién es tu cliente?"
-        name="nombre" [(ngModel)]="busCliente.nombre" required #nombre="ngModel"></ion-input>
-    </ion-item>
+   <div class="container_box">
+      <div class="box_nuevo_producto">
+         <form #formProducto="ngForm" class="form_pago" (ngSubmit)="productoCreate(formProducto)" *ngIf="crearClientev">
+            <ion-item class="spd spi">
+               <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Nombre del producto" name="nombre"
+               [(ngModel)]="crearProducto.nombre" required #nombre="ngModel"></ion-input>
+            </ion-item>
 
-    <div class="container_scan">
-      <button ion-button class="btn_scan" type="submit">Buscar</button>
-    </div>
+            <ion-item class="spd spi">
+               <ion-input type="numeric" class="input_pago" placeholder="Precio del producto" name="ciudad"
+               [(ngModel)]="crearProducto.precio" required #precio="ngModel"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+               <ion-textarea class="input_pago" placeholder="Descripción del producto" name="descripcion" [(ngModel)]="crearProducto.descripcion" required></ion-textarea>
+            </ion-item>
 
-    <div class="list_clientesnpos" *ngIf="encontradoCliente">
-      <div class="ed-container">
-        <div class="ed-item ed-container border_item" *ngFor="let cliente of clientes">
-          <div class="ed-item s-30 spi cross-center">
-            <div class="btn_scliente" (click)="asignarCliente(cliente)">Seleccionar</div>
-          </div>
-
-          <div class="ed-item s-40  spi cross-center">
-            <p>{{cliente.nombre}} {{cliente.apellido}}</p>
-          </div>
-
-          <div class="ed-item s-30 m-20 spd spi cross-center">
-            <p>{{cliente.telefono}}</p>
-          </div>
-        </div>
+            <div class="container_scan">
+            <button ion-button class="btn_scan" [disabled]="formProducto.invalid" type="submit">Guardar</button>
+            </div>
+         </form>
       </div>
-    </div>
-
-    <div class="container_scan" *ngIf="encontradoCliente">
-      <p>¿No encuentras a tu cliente?</p>
-      <button ion-button class="btn_nuevo" type="button" (click)="showCrear()">Crear Nuevo</button>
-    </div>
-  </form>
-
-  <form #formcCliente="ngForm" class="form_pago" (ngSubmit)="clienteCreate(formcCliente)" *ngIf="crearClientev">
-    <ion-item class="spd spi">
-      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Nombre" name="nombre"
-        [(ngModel)]="crearCliente.nombre" required #nombre="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spd spi">
-      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Apellido" name="apellido"
-        [(ngModel)]="crearCliente.apellido" required #apellido="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spd spi">
-      <ion-input type="email" autocorrect="on" class="input_pago" placeholder="Correo" name="email"
-        [(ngModel)]="crearCliente.email" required #email="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spd spi">
-      <ion-input type="tel" autocorrect="on" class="input_pago" placeholder="Teléfono" name="telefono"
-        [(ngModel)]="crearCliente.telefono" required #telefono="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spd spi">
-      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="NIT opcional" name="nit"
-        [(ngModel)]="crearCliente.nit" #nit="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spi spd container_selet">
-      <ion-select [selectOptions]="selectOptions" okText="Ok" cancelText="Cancelar" placeholder="País..." name="pais"
-        #pais="ngModel" [(ngModel)]="crearCliente.pais" required>
-        <ion-option *ngFor="let pais of paises" [value]="pais.code">
-          {{ pais.name }}
-        </ion-option>
-      </ion-select>
-    </ion-item>
-
-    <div class="alert_box" *ngIf="pais.dirty && pais?.errors?.required">
-      <p>País requerido</p>
-    </div>
-
-    <ion-item class="spi spd container_selet" *ngIf="crearCliente.pais =='US'">
-      <ion-select [selectOptions]="selectOptionsUC" okText="Ok" cancelText="Cancelar" placeholder="Estado US..."
-        name="estado" #estado="ngModel" [(ngModel)]="crearCliente.estado" required>
-        <ion-option *ngFor="let estadoUS of estadosUS" [value]="estadoUS.code">
-          {{ estadoUS.name }}
-        </ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item class="spi spd container_selet" *ngIf="crearCliente.pais =='CA'">
-      <ion-select [selectOptions]="selectOptionsUC" okText="Ok" cancelText="Cancelar" placeholder="Estado CA..."
-        name="estado" #estado="ngModel" [(ngModel)]="crearCliente.estado" required>
-        <ion-option *ngFor="let estadoCA of estadosCA" [value]="estadoCA.code">
-          {{ estadoCA.name }}
-        </ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item class="spd spi">
-      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Ciudad" name="ciudad"
-        [(ngModel)]="crearCliente.ciudad" required #ciudad="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spd spi" *ngIf="crearCliente.pais !='GT'">
-      <ion-input type="tel" autocorrect="on" class="input_pago" placeholder="Código Postal" name="postalCode"
-        [(ngModel)]="crearCliente.postalCode" required #postalCode="ngModel"></ion-input>
-    </ion-item>
-
-    <ion-item class="spd spi">
-      <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Dirección actual" name="direccion"
-        [(ngModel)]="crearCliente.direccion" required #direccion="ngModel"></ion-input>
-    </ion-item>
-
-    <div class="container_scan">
-      <button ion-button class="btn_scan" [disabled]="formcCliente.invalid" type="submit">Guardar y continuar</button>
-    </div>
-  </form>
+   </div>
 
   <form class="form_pago" (ngSubmit)="enviarSoli()" #formCliente="ngForm" [hidden]="!frmShared">
     <div *ngIf="!datosTran.ventaProducto">

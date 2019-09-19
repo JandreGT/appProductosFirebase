@@ -1,40 +1,55 @@
 <ion-menu class="menu_container" [content]="content">
+
   <ion-content>
 
     <div class="container_logom">
-      <div class="mlogo"></div>
+      <p>Hola, Usuario</p>
+      <!-- <div class="mlogo"></div> -->
     </div>
 
     <ion-list class="container_menudistributy">
       <div class="items_fstart">
-        <button ion-item class="icon ico_inicio" *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
+      <!-- <button ion-item class="icon ico_inicio" *ngFor="let p of pages" (click)="openPage(p)">
+         {{p.title}}
+      </button> -->
 
-        <button ion-item class="icon ico_tran" (click)="irTran()">
-          Mis ventas
-        </button>
+      <button ion-item class="item_icon" (click)="irTran()">
+         <ion-icon name="md-home" class="ico_menu_style"></ion-icon>
+         Inicio
+      </button>
+      
+      <button ion-item class="item_icon" (click)="irTran()">
+         <ion-icon name="qr-scanner" class="ico_menu_style"> </ion-icon>
+         Escanear QR
+      </button>
+     
+      <button ion-item class="item_icon" (click)="irNuevoProducto()">
+         <ion-icon name="md-camera" class="ico_menu_style"> </ion-icon>
+         Agregar Producto
+      </button>
 
-        <button ion-item class="icon ico_prod" (click)="irProductos()">
-          Productos
-        </button>
+      <!-- <button ion-item class="icon ico_prod" (click)="irProductos()">
+         Productos
+      </button> -->
 
-        <button ion-item class="icon ico_irdash" (click)="irPagalo()">
-          Ir a Pagalo
-        </button>
+      <!-- <button ion-item class="icon ico_irdash" (click)="irPagalo()">
+         Ir a Pagalo
+      </button> -->
 
-        <!-- <button ion-item class="icon ico_ajustes" (click)="irAjustes()">
-          Ajustes
-        </button> -->
+      <!-- <button ion-item class="icon ico_ajustes" (click)="irAjustes()">
+         Ajustes
+      </button> -->
 
-        <button ion-item class="icon ico_ajustes" (click)="reset()">
-          Restablecer App
-        </button>
+      <!-- <button ion-item class="icon ico_ajustes" (click)="reset()">
+         Restablecer App
+      </button> -->
       </div>
 
       <div class="items_fend">
-        <button ion-item class="icon ico_logout" (click)="logout()">
-          Salir
+         
+        <button ion-item class="item_icon" (click)="logout()">
+            <ion-icon name="md-log-out" class="ico_menu_style"> </ion-icon>
+            Salir
         </button>
       </div>
     </ion-list>

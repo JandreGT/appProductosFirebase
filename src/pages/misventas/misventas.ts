@@ -34,7 +34,7 @@ export class MisventasPage {
   }
 
   constructor(public _tran:TransaccionesProvider, public alertCtrl:AlertController,
-              public loadingCtrl:LoadingController, public modalCtrl:ModalController, public _auth:AuthProvider,
+              public loadingCtrl:LoadingController, public modalCtrl:ModalController,
               public navCtrl:NavController) {
     this.filtrarMes();
   }
@@ -232,7 +232,7 @@ export class MisventasPage {
   }
 
   logout() {
-    this._auth.logout();
+    // this._auth.logout();
     this.navCtrl.setRoot(HomePage);
   }
 

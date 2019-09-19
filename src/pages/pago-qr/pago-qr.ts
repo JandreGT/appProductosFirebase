@@ -124,7 +124,7 @@ export class PagoQrPage {
   }
 
   logout() {
-    this._auth.logout();
+    // this._auth.logout();
     this.navCtrl.setRoot(HomePage);
   }
 

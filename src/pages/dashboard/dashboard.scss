@@ -64,7 +64,7 @@ page-dashboard {
     .bg_tarjeta {
       float: left;
       width: 100%;
-      background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+      background:  linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(82,82,82,1) 100%); 
       flex-direction: column;
       justify-content: center;
 

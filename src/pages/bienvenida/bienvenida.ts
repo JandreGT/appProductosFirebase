@@ -19,7 +19,7 @@ export class BienvenidaPage {
 
   irLogin() {
     this.navCtrl.setRoot(HomePage);
-    this._auth.irLoginUser(1);
+    // this._auth.irLoginUser(1);
   }
 
   ionViewDidLoad() {

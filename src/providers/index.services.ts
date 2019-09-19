@@ -7,3 +7,5 @@ export { SolicitudPagoProvider } from './solicitud-pago/solicitud-pago';
 export { PosProvider } from './pos/pos';
 export { DataUserProvider } from './data-user/data-user';
 export { AuthProvider } from './auth/auth';
+export { AngularFireDatabase } from '@angular/fire/database';
+export { FirebaseServiceProvider } from './firebase-service/firebase-service';

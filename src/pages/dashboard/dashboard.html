@@ -10,44 +10,42 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <div class="ed-container full">
-    <div class="ed-item s-100">
-      <div class="card_dashboard bg_ventas" (click)="irVentas()">
-        <p>Mis Ventas</p>
-        <ion-spinner item-center name="dots" *ngIf="loading"></ion-spinner>
-        <h1 *ngIf="!loading">Q {{totalVentagtq | number:'.2-2'}}</h1>
+   <div class="ed-container full">
+      <div class="ed-item s-100">
+         <div class="card_dashboard bg_ventas" (click)="irVentas()">
+         <p>Mis Ventas</p>
+         <ion-spinner item-center name="dots" *ngIf="loading"></ion-spinner>
+         <h1 *ngIf="!loading">Q {{totalVentagtq | number:'.2-2'}}</h1>
+         </div>
       </div>
-    </div>
 
-    <div class="ed-item s-100">
-      <div class="card_dashboard bg_tarjeta" (click)="irSquare('pos')">
-        <div class="ico_tarjetad"></div>
-        <h1>Cobros con Tarjeta</h1>
+      <div class="ed-item s-100">
+         <div class="card_dashboard bg_tarjeta" (click)="irSquare('pos')">
+         <div class="ico_tarjetad"></div>
+         <h1>Cobros con Tarjeta</h1>
+         </div>
       </div>
-    </div>
 
-    <div class="ed-item s-100">
-      <div class="card_dashboard bg_solicitudd" (click)="irSquare('solicitud')">
-        <div class="ico_tarjetad"></div>
-        <h1>Solicitud de Pago</h1>
-      </div>
-    </div>
+      <!-- <div class="ed-item s-100">
+         <div class="card_dashboard bg_solicitudd" (click)="irSquare('solicitud')">
+         <div class="ico_tarjetad"></div>
+         <h1>Solicitud de Pago</h1>
+         </div>
+      </div> -->
 
-    <div class="ed-item s-100">
-      <div class="card_dashboard bg_pagoqr" (click)="irQr()">
-        <div class="ico_tarjetad"></div>
-        <h1>Cobro por QR</h1>
-      </div>
-    </div>
+      <!-- <div class="ed-item s-100">
+         <div class="card_dashboard bg_pagoqr" (click)="irQr()">
+         <div class="ico_tarjetad"></div>
+         <h1>Cobro por QR</h1>
+         </div>
+      </div> -->
 
-    <div class="ed-item s-100">
-      <div class="card_dashboard bg_productos" (click)="irProductos()">
-        <div class="ico_prod"></div>
-        <h1>Mis Productos</h1>
-      </div>
-    </div>
-  </div>
-
+      <!-- <div class="ed-item s-100">
+         <div class="card_dashboard bg_productos" (click)="irProductos()">
+         <div class="ico_prod"></div>
+         <h1>Mis Productos</h1>
+         </div>
+      </div> -->
+   </div>
 </ion-content>

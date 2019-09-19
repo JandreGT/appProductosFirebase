@@ -1,18 +1,19 @@
 page-registro-app {
+  
   .ico_pagalo {
     float: left;
     width: 60px;
     height: 70px;
-    background: url('../../assets/imgs/logo-pagalo.svg') no-repeat center;
+    // background: url('../../assets/imgs/logo-pagalo.svg') no-repeat center;
     background-size: 75%;
   }
 
   .radius_box {
     width: 100%;
     height: 140px;
-    border-radius: 0 0 60px 60px;
+    // border-radius: 0 0 60px 60px;
     overflow: hidden;
-    background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(82,82,82,1) 100%);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -27,9 +28,10 @@ page-registro-app {
   }
 
   .box_registro {
+    margin-top: 20%;
     float: left;
     width: 100%;
-    background: #fff;
+    background: #424242;
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 10px 15px;
@@ -39,7 +41,7 @@ page-registro-app {
         width: 100%;
         text-align: center;
         font-size: 25px;
-        color: #ff6567;
+        color: #fff;
       }
 
       p {
@@ -88,6 +90,7 @@ page-registro-app {
         margin-top: 15px;
         margin-bottom: 5px;
         text-align: left;
+        color: #eee;
       }
 
       .input_registro {

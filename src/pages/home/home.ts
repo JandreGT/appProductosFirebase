@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController, AlertController, LoadingController, Platform } from 'ionic-angular';
+import { NavController, MenuController, AlertController, LoadingController, Platform,} from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ToastController } from 'ionic-angular';
 //Pages
 import { DashboardPage } from '../dashboard/dashboard';
+import { RegistroAppPage } from '../registro-app/registro-app';
 //Providers
 import { AuthProvider } from '../../providers/auth/auth';
-import { ScanData } from '../../models/scan-data.model';
-import { RegistroPage } from '../registro/registro';
+import { ScanData } from '../../models/scan-data.model'; 
+//models
+import { UserModel } from '../../models/user-model';
 
 @Component({
   selector: 'page-home',
@@ -16,36 +18,58 @@ import { RegistroPage } from '../registro/registro';
 })
 export class HomePage {
 
-  email: string = "";
-  password: string = "";
-  openRegistro:boolean = false;
+   userModel: UserModel;
+   email: string = "";
+   password: string = "";
+   openRegistro:boolean = false;
 
-  constructor(public navCtrl: NavController, public menu: MenuController, private auth: AuthProvider,
-              public alertCtrl: AlertController, public loadingCtrl: LoadingController,
-              private iab: InAppBrowser,private barcodeScanner: BarcodeScanner,private toastCtrl: ToastController,
-              private platform:Platform) {}
+   constructor(public navCtrl: NavController,         public menu: MenuController, 
+              private AuthProvider: AuthProvider,     public alertCtrl: AlertController, 
+              public loadingCtrl: LoadingController,  private iab: InAppBrowser,
+              private barcodeScanner: BarcodeScanner, private toastCtrl: ToastController,    
+              private platform:Platform) {
 
-  login() {
+      this.userModel = new UserModel();
+   }
 
-    const loader = this.loadingCtrl.create({
-      content: "",
-    });
+   login(){
 
-    loader.present();
+      if(this.userModel.email==undefined || this.userModel.password==undefined) {
+         this.alertCtrl.create({
+            title: 'Error',
+            subTitle: 'Ingrese el usuario y contraseña',
+            buttons: ['OK']
+         }).present()
 
-    this.auth.loginUser(this.email, this.password).subscribe(response => {
-      // this.navCtrl.setRoot(SquerePage);
-      this.navCtrl.setRoot(DashboardPage);
-      loader.dismiss();
-    }, error => {
-      loader.dismiss();
-      this.alertCtrl.create({
-        title: 'Error al ingresar',
-        subTitle: error.mensaje,
-        buttons: ['OK']
-      }).present()
-    });
-  }
+         return;
+      }
+   
+      const loading = this.loadingCtrl.create({
+         content:  'Iniciando sesión. Por favor, espere...',
+      });
+      loading.present();
+
+      this.AuthProvider.signInWithEmailAndPassword(this.userModel).then(result => {
+
+         loading.dismiss();
+         this.navCtrl.setRoot(DashboardPage);
+
+      }).catch(error => {
+
+         loading.dismiss();
+
+         this.alertCtrl.create({
+            title: 'Ha ocurrido un error inesperado. Por favor intente nuevamente',
+            subTitle: error,
+            buttons: ['OK']
+         }).present();
+      });
+
+   }
+
+   registro(){
+      this.navCtrl.push(RegistroAppPage);
+   }
 
   registrate() {
     this.openRegistro = true;

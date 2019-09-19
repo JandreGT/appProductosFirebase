@@ -24,19 +24,6 @@ export class DashboardPage {
     this.menuCtrl.toggle();
   }
 
-  getDataUser() {
-    this._user.getUser().subscribe( () => {
-      this.validateShowPage();
-    },error => {
-      this.alertCtrl.create({
-        title: 'Tu sesión ha expirado',
-        subTitle: error.mensaje,
-        buttons: [{text: 'Ok'}]
-      }).present()
-      this.logout();
-    });
-  }
-
   getTotalTranMes() {
     this.loading = true;
     this._tran.getTotalTranMes().subscribe(() => {
@@ -88,7 +75,6 @@ export class DashboardPage {
   }
 
   logout() {
-    this._auth.logout();
     this.navCtrl.setRoot(HomePage);
   }
 
@@ -114,7 +100,7 @@ export class DashboardPage {
   }
 
   ionViewWillEnter() {
-    this.getDataUser();
+    // this.getDataUser();
     this.getTotalTranMes();
   }
 

@@ -253,7 +253,7 @@ export class SolicitudQrPage {
   }
 
   logout() {
-    this._auth.logout();
+    // this._auth.logout();
     this.navCtrl.setRoot(HomePage);
   }
 

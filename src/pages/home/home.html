@@ -1,33 +1,31 @@
 <ion-content class="back_login">
-  <div class="container_btnregistro">
-    <button ion-button color="blanco" (click)="registrate()" class="btn_registro" type="button">Registrate</button>
-  </div>
 
   <div class="center_container">
-    <div class="logo_contaienr">
-      <div class="logo_pagalo"></div>
+    <div class="titulo">
+      <h1>Inicio de sesion</h1>
     </div>
 
     <form class="form-login" (ngSubmit)="login()">
       <ion-item class="border_inputc">
-        <ion-input type="email" [(ngModel)]="email" name="email" class="text_input" placeholder="Email"></ion-input>
+        <ion-input type="email" [(ngModel)]="userModel.email" name="email" class="text_input" placeholder="Usuario"></ion-input>
       </ion-item>
 
       <ion-item class="border_inputp">
-        <ion-input type="password" [(ngModel)]="password" name="password" class="text_input" placeholder="Contraseña"></ion-input>
+        <ion-input type="password" [(ngModel)]="userModel.password" name="password" class="text_input" placeholder="Contraseña"></ion-input>
       </ion-item>
-
-      <p class="tex_contra">No me recuerdo de mi Contraseña</p>
-
+      
       <div class="button_container">
-        <button ion-button class="btn_login" type="submit" [disabled]="email.length < 5 || password.length < 5">Entrar</button>
+        <button ion-button class="btn_login" type="submit" >Entrar</button>
       </div>
+
+      <p class="tex_contra" (click)="registro()">Registro</p>
+      
     </form>
 
   </div>
 </ion-content>
 <ion-footer>
   <div class="button_container">
-    <button ion-button class="btn_scanqr" (click)="scanQr()" type="button">Lector QR</button>
+    <!-- <button ion-button class="btn_scanqr" (click)="scanQr()" type="button">Lector QR</button> -->
   </div>
 </ion-footer>

@@ -1,0 +1,8 @@
+TUTORIAL PARA IMAGENES
+https://medium.com/learn-ionic-framework/construye-una-app-con-ionic-y-firebase-paso-a-paso-218105b77263
+
+https://www.nigmacode.com/ionic/Crud-ionic-firebase
+
+https://blog.ng-classroom.com/blog/tips/ionic-generator/
+
+https://es.stackoverflow.com/questions/136662/ionic-3-generando-apk-android

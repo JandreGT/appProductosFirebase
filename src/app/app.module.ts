@@ -11,7 +11,7 @@ import { MyApp } from './app.component';
 //Pages
 import { HomePage, DashboardPage, SquerePage, OpcionpagoPage, PosPage, ConexionSquarePage, PosmovilPage, TranAcceptPage,
         TranRejectPage, SolicitupagoPage, SoliAceptPage, SoliRejectPage, MisventasPage,PagoQrPage,SolicitudQrPage, TiendaPage,
-        ModalProductoPage, CarritoPage, TipoPagoPage, RegistroPage, RegistroAppPage, BienvenidaPage, TipoUsuarioPage, PersonaPage,
+        ModalProductoPage, CarritoPage, TipoPagoPage, RegistroAppPage, BienvenidaPage, TipoUsuarioPage, PersonaPage,
         AjustesPage, PersonalizarPage, TabsAjustesPage}
         from '../pages/index.page'
 
@@ -31,11 +31,26 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Camera } from '@ionic-native/camera';
 import { CardIO } from '@ionic-native/card-io';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+// import { Observable } from 'rxjs-compat';
+
 
 //Providers
-import {  AuthProvider, DataUserProvider, PosProvider, SolicitudPagoProvider, TransaccionesProvider, ProductosProvider,
-          RegistroProvider, AjustesProvider, BuscarClienteProvider }
-          from '../providers/index.services';
+import {DataUserProvider, PosProvider, SolicitudPagoProvider, TransaccionesProvider, ProductosProvider,
+          RegistroProvider, AjustesProvider, BuscarClienteProvider, AuthProvider,FirebaseServiceProvider} from '../providers/index.services';
+          
+
+export const firebaseConfig  = {
+  apiKey: "AIzaSyD8TpquJDSu9NWQBdwAJdhWzsoDh_Sl8rM",
+  authDomain: "ventaqr-a51fc.firebaseapp.com",
+  databaseURL: "https://ventaqr-a51fc.firebaseio.com",
+  projectId: "ventaqr-a51fc",
+  storageBucket: "",
+  messagingSenderId: "31682504833",
+  appId: "1:31682504833:web:ff5cb1e4091c520a614580"
+};
 
 @NgModule({
   declarations: [
@@ -59,8 +74,7 @@ import {  AuthProvider, DataUserProvider, PosProvider, SolicitudPagoProvider, Tr
     TiendaPage,
     ModalProductoPage,
     CarritoPage,
-    TipoPagoPage,
-    RegistroPage,
+    TipoPagoPage, 
     RegistroAppPage,
     BienvenidaPage,
     TipoUsuarioPage,
@@ -88,7 +102,10 @@ import {  AuthProvider, DataUserProvider, PosProvider, SolicitudPagoProvider, Tr
       scrollAssist: false,
       autoFocusAssist: false
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -112,23 +129,20 @@ import {  AuthProvider, DataUserProvider, PosProvider, SolicitudPagoProvider, Tr
     ModalProductoPage,
     CarritoPage,
     TipoPagoPage,
-    RegistroPage,
     RegistroAppPage,
     BienvenidaPage,
     TipoUsuarioPage,
     PersonaPage,
     AjustesPage,
     PersonalizarPage,
-    TabsAjustesPage,
-    //components
+    TabsAjustesPage, 
     DetalleTransaccionComponent,
     InfoTiendaComponent,
     ModalImageComponent
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-    AuthProvider,
+    SplashScreen,    
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     DataUserProvider,
     PosProvider,
@@ -145,7 +159,10 @@ import {  AuthProvider, DataUserProvider, PosProvider, SolicitudPagoProvider, Tr
     AjustesProvider,
     Camera,
     CardIO,
-    BuscarClienteProvider
+    BuscarClienteProvider,
+    AuthProvider,
+    // Observable,
+    FirebaseServiceProvider
   ]
 })
 export class AppModule {}

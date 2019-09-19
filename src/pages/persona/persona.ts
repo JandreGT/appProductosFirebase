@@ -52,7 +52,7 @@ export class PersonaPage {
 
   restablecer() {
     this.navCtrl.setRoot(TipoUsuarioPage);
-    this._auth.resetApp();
+    // this._auth.resetApp();>
   }
 
   presentToast(message: string) {

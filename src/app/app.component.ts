@@ -4,13 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
-import { HomePage, DashboardPage, MisventasPage, TiendaPage, BienvenidaPage, PersonaPage,TabsAjustesPage } from '../pages/index.page';
+import { HomePage, DashboardPage, SolicitupagoPage, TiendaPage, BienvenidaPage, PersonaPage,TabsAjustesPage } from '../pages/index.page';
 import { AuthProvider } from '../providers/auth/auth';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
-templateUrl: 'app.html'
+   templateUrl: 'app.html'
 })
 export class MyApp {
 @ViewChild(Nav) nav: Nav;
@@ -19,13 +19,13 @@ welcome = BienvenidaPage;
 person = PersonaPage;
 
 login = HomePage;
-dashboard = DashboardPage;
+dashboard = SolicitupagoPage;
 
 rootPage: any;
 
 pages: Array<{ title: string, component: any }>;
 
-constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public _auth:AuthProvider,
+constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
             public storage: Storage, public menuCtrl: MenuController, public screenOrientation: ScreenOrientation,
             private iab: InAppBrowser) {
 
@@ -33,18 +33,19 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
    statusBar.styleLightContent();
    
    this.pages = [
-      { title: 'Inicio', component: DashboardPage },
+      { title: 'Inicio', component: DashboardPage }, 
    ];
 }
 
    initializeApp() {
+
+      // this.rootPage = this.dashboard; return;
+
       this.platform.ready().then(() => {
 
          this.storage.ready().then(() => {
 
-            this._auth.guardarStoregeApp();
-            this.splashScreen.hide();
-            this._auth.cargarStorage();
+            this.splashScreen.hide(); 
 
             this.storage.get("stateApp").then(stateApp => {
       
@@ -73,8 +74,8 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
       this.menuCtrl.close();  
    }
 
-   irTran() {
-      this.nav.push(MisventasPage);
+   irNuevoProducto() {
+      this.nav.push(SolicitupagoPage);
       this.menuCtrl.close();
    }
 
@@ -94,12 +95,10 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
    }
 
    reset() {
-      this.menuCtrl.close();
-      this._auth.resetApp()
+      this.menuCtrl.close(); 
    }
 
-   logout() {
-      this._auth.logout();
+   logout(){
       this.nav.setRoot(HomePage);
    }
 }

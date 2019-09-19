@@ -100,5 +100,4 @@
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
     <plugin name="card.io.cordova.mobilesdk" spec="2.1.0" />
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="7.1.4" />
 </widget>

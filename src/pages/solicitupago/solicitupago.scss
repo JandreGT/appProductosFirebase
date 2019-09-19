@@ -13,14 +13,15 @@ page-solicitupago {
     width: 100%;
 
       .input_pago {
-        border-radius: 10px;
+        border-radius: 6px;
         border: 1px solid #ddd;
         padding: 0 10px;
         margin-top: 0;
+        color: #fff !important;
       }
 
       .input_pago.ng-invalid.ng-touched {
-        border: 1px dashed color($colors,rojo);
+        border: 1px #ddd;
       }
 
       .btn_container {
@@ -33,10 +34,10 @@ page-solicitupago {
 
           .btn_pago {
             float: left;
-            width: 75%;
-            background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
-            color: #fff;
-            font-size: 20px;
+            width: 100%;
+            background: 424242;
+            color: #ddd;
+            font-size: 16px;
             font-weight: bold;
             font-family: $source;
           }
@@ -54,6 +55,7 @@ page-solicitupago {
 
   .item-block {
     padding: 10px !important;
+    background: transparent;
 
     .label {
       margin: 0 !important;
@@ -66,7 +68,7 @@ page-solicitupago {
     width: 100%;
     height: 1px;
     margin-bottom: 20px;
-    background: linear-gradient(to right, #ff643e 0%, #fa4537 100%);
+    background: #424242;
   }
 
   .contianer_buttonsshared {
@@ -154,7 +156,7 @@ page-solicitupago {
           .btn_pago {
             float: left;
             width: 75%;
-            background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+            background: #424242 !important;
             color: #fff;
             font-size: 20px;
             font-weight: bold;
@@ -193,7 +195,7 @@ page-solicitupago {
       .btn_scan {
         float: left;
         width: 70%;
-        background: linear-gradient(90deg,#ff6e64 0%,#ff9951);
+        background: #757575  ;
         color: #fff;
         font-size: 18px;
         height: 50px;
@@ -265,4 +267,54 @@ page-solicitupago {
       margin: 0;
     }
   }
+}
+
+.container_box {
+  float: left;
+  width: 100%;
+  padding: 0 5px;
+  position: relative;
+  top: -35px;
+}
+
+.box_nuevo_producto {
+  margin-top: 20%;
+  float: left;
+  width: 100%;
+  background: #424242;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 5px 5px;
+
+    h1 {
+      float: left;
+      width: 100%;
+      text-align: center;
+      font-size: 25px;
+      color: #fff;
+    }
+
+    p {
+      float: left;
+      width: 100%;
+      color: #707070;
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 3px;
+    }
+
+    p.sub_titulo {
+      float: left;
+      width: 100%;
+      color: #707070;
+      font-size: 16px;
+      font-weight: 300;
+      margin: 0;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+}
+
+item-ios{
+  background-color: transparent !important;
 }
