@@ -6,8 +6,7 @@ import { EndPoint } from '../end-point';
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
-import { AuthProvider } from '../auth/auth';
-import { DataUserProvider } from '../data-user/data-user';
+import { AuthProvider } from '../auth/auth'; 
 
 @Injectable()
 export class ProductosProvider {
@@ -24,84 +23,8 @@ export class ProductosProvider {
     })
   };
 
-  constructor(public http: Http, public auth:AuthProvider, public dataUser:DataUserProvider) {
+  constructor(public http: Http, public auth:AuthProvider) {
 
-  }
-
-  getProductos(): Observable<any> {
-    let data = new URLSearchParams();
-    data.append("token", this.auth.token);
-
-    let url = AppContant.api + EndPoint.getProductos + this.dataUser.apikeyEmpresa.idenEmpresa + `?${data}`;
-
-    return this.http.get(url).map(resp => {
-      let data_rep = resp.json();
-      this.productos = data_rep.datos;
-
-      this.productos.forEach(element => {
-        element.showAgregar = true;
-        element.showButtonsAdd = false;
-        element.cantidadProducto = 0;
-      });
-
-    }).catch((error: any) => Observable.throw(
-      error.json()
-    ));
-  }
-
-  getCategorias(): Observable<any> {
-    let data = new URLSearchParams();
-    data.append("token", this.auth.token);
-
-    let url = AppContant.api + EndPoint.getCategorias + this.dataUser.apikeyEmpresa.idenEmpresa + `?${data}`;
-
-    return this.http.get(url).map(resp => {
-      let data_rep = resp.json();
-      this.categorias = data_rep.datos;
-    }).catch((error: any) => Observable.throw(
-      error.json()
-    ));
-  }
-
-  getProductosCategoria(categoriaId:any): Observable<any> {
-    let data = new URLSearchParams();
-    data.append("token", this.auth.token);
-
-    let url = AppContant.api + EndPoint.getProductosCategoria + this.dataUser.apikeyEmpresa.idenEmpresa +`/${categoriaId}`+ `?${data}`;
-
-    return this.http.get(url).map(resp => {
-      let data_rep = resp.json();
-      this.productos = data_rep.datos;
-
-      this.productos.forEach(element => {
-        element.showAgregar = true;
-        element.showButtonsAdd = false;
-        element.cantidadProducto = 0;
-      });
-    }).catch((error: any) => Observable.throw(
-      error.json()
-    ));
-  }
-
-  getProductosNombre(nombreProducto: any): Observable<any> {
-    let data = new URLSearchParams();
-    data.append("token", this.auth.token);
-    data.append("parametro", nombreProducto)
-
-    let url = AppContant.api + EndPoint.getProductosNombre + this.dataUser.apikeyEmpresa.idenEmpresa + `?${data}`;
-
-    return this.http.post(url, null ,this.httpOptions).map(resp => {
-      let data_rep = resp.json();
-      this.productos = data_rep.datos;
-
-      this.productos.forEach(element => {
-        element.showAgregar = true;
-        element.showButtonsAdd = false;
-        element.cantidadProducto = 0;
-      });
-    }).catch((error: any) => Observable.throw(
-      error.json()
-    ));
   }
 
   agregarCarrito(producto: any) {
@@ -146,6 +69,27 @@ export class ProductosProvider {
     this.carrito = [];
     this.productoRepetido = false;
     this.totalVenta = 0;
+  }
+
+  getProductos(): Observable<any> {
+    let data = new URLSearchParams();
+    data.append("token", 'mi token');
+
+    let url = AppContant.api + EndPoint.getProductos;
+
+    return this.http.get(url).map(resp => {
+      let data_rep = resp.json();
+      this.productos = data_rep.datos;
+
+      this.productos.forEach(element => {
+        element.showAgregar = true;
+        element.showButtonsAdd = false;
+        element.cantidadProducto = 0;
+      });
+
+    }).catch((error: any) => Observable.throw(
+      error.json()
+    ));
   }
 
 }

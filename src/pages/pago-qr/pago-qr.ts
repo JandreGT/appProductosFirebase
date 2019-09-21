@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { Platform, AlertController, NavController, LoadingController } from 'ionic-angular';
+import { Platform, NavController,AlertController} from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ToastController } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { DataUserProvider } from '../../providers/data-user/data-user';
-import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
-import { ScanData } from '../../models/scan-data.model';
-import { SolicitudPagoProvider } from '../../providers/index.services';
-import { SquerePage } from '../squere/squere';
-
+import { ScanData } from '../../models/scan-data.model'; 
+import { FirebaseServiceProvider } from '../../providers/index.services';
 
 @Component({
   selector: 'page-pago-qr',
@@ -17,64 +13,15 @@ import { SquerePage } from '../squere/squere';
 })
 export class PagoQrPage {
 
-  infoEmpresa:any = {};
-  nombreEmpesa:string = "";
-  telefonoEmpresa:string = "";
-  logoEmpresa:any;
+  producto:any;
 
-  constructor(private barcodeScanner: BarcodeScanner,private toastCtrl: ToastController,
-              private platform:Platform, private iab:InAppBrowser, public _user:DataUserProvider, public alertCtrl:AlertController,
-              public _auth:AuthProvider,public navCtrl:NavController, public loadingCtrl:LoadingController,
-              public _solicitudCtrl:SolicitudPagoProvider) {
-    this.getDataUser();
+  constructor(private barcodeScanner: BarcodeScanner, private toastCtrl: ToastController,
+              private platform:Platform,              private iab:InAppBrowser, 
+              public navCtrl:NavController,           public FirebaseServiceProvider:FirebaseServiceProvider,
+              public alertCtrl:AlertController,) {
+    this.scanQr();
   }
-
-  getDataUser() {
-    this.getQrEmpresa();
-    this._user.getUser().subscribe(resp => {
-      this.infoEmpresa = this._user.infoUser;
-      this.nombreEmpesa =  this.infoEmpresa.empresa.nombre;
-
-      if (this.infoEmpresa.empresa.personalizar != null && this.infoEmpresa.empresa.personalizar.telefono != ' ') {
-        this.telefonoEmpresa = this.infoEmpresa.empresa.personalizar.telefono;
-      } else {
-        this.telefonoEmpresa = '22960894';
-      }
-
-      if (this.infoEmpresa.empresa.personalizar != null && this.infoEmpresa.empresa.personalizar.logo != '') {
-        this.logoEmpresa = this.infoEmpresa.empresa.personalizar.logo;
-      } else {
-        this.logoEmpresa = 'https://pagalocard.s3.amazonaws.com/empresa/personalizar/u55/e26/26_300x300_sms-pagalo.jpg';
-      }
-    }, error => {
-      this.alertCtrl.create({
-        title: 'Tu sesión ha expirado',
-        subTitle: error.mensaje,
-        buttons: [{ text: 'Ok' }]
-      }).present()
-      this.logout();
-    });
-  }
-
-  getQrEmpresa() {
-    let loading = this.loadingCtrl.create({
-      content: ""
-    });
-    loading.present();
-
-    this._solicitudCtrl.getQr().subscribe(() => {
-      loading.dismiss();
-    }, error => {
-      console.log('error: ', error);
-      loading.dismiss();
-      this.alertCtrl.create({
-        title: 'Error',
-        subTitle: error.mensaje,
-        buttons: ['OK']
-      }).present()
-    });
-  }
-
+  
   scanQr() {
     console.log('escanear...');
 
@@ -96,7 +43,20 @@ export class PagoQrPage {
           break;
 
           default:
-            this.presentToast("El QR no es compatible con PAGALO.")
+
+            this.FirebaseServiceProvider.getProduct(barcodeData.text)
+              .subscribe(producto=>{
+                 this.producto = producto;
+
+                 this.alertCtrl.create({
+                  title: 'Producto',
+                  subTitle: this.producto.nombre+" tiene un precio de " +this.producto.precio,
+                  buttons: ['OK']
+               }).present()
+
+            }); 
+            
+            // this.presentToast(this.producto);
           break;
         }
       } else {
@@ -109,10 +69,6 @@ export class PagoQrPage {
     });
   }
 
-  montoQr() {
-    this.navCtrl.push(SquerePage, { 'tipo': 'montoQr' });
-  }
-
   presentToast(message:string) {
     let toast = this.toastCtrl.create({
       message: message,
@@ -123,8 +79,7 @@ export class PagoQrPage {
     toast.present();
   }
 
-  logout() {
-    // this._auth.logout();
+  logout() { 
     this.navCtrl.setRoot(HomePage);
   }
 

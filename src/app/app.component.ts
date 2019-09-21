@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
-import { HomePage, DashboardPage, SolicitupagoPage, TiendaPage, BienvenidaPage, PersonaPage,TabsAjustesPage } from '../pages/index.page';
+import { HomePage, DashboardPage, SolicitupagoPage,PagoQrPage } from '../pages/index.page';
 import { AuthProvider } from '../providers/auth/auth';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -14,10 +14,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 })
 export class MyApp {
 @ViewChild(Nav) nav: Nav;
-
-welcome = BienvenidaPage;
-person = PersonaPage;
-
+ 
 login = HomePage;
 dashboard = SolicitupagoPage;
 
@@ -39,34 +36,40 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
 
    initializeApp() {
 
-      // this.rootPage = this.dashboard; return;
+      this.rootPage = this.dashboard; return;
 
-      this.platform.ready().then(() => {
+      // this.platform.ready().then(() => {
 
-         this.storage.ready().then(() => {
+      //    this.storage.ready().then(() => {
 
-            this.splashScreen.hide(); 
+      //       this.splashScreen.hide(); 
 
-            this.storage.get("stateApp").then(stateApp => {
+      //       this.storage.get("stateApp").then(stateApp => {
       
-               this.storage.get("token").then(token => {
-                  if(token != undefined){
-                     // console.log('Estado empresa = 1, bienvenida = 1 y token definido');
-                     this.rootPage = this.dashboard;
-                  }else{
-                     // console.log('Estado empresa = 1 bienvenida = 1 y token indefinido');
-                     this.rootPage = this.login;
-                  }
-               });                   
+      //          this.storage.get("token").then(token => {
+      //             if(token != undefined){
+      //                // console.log('Estado empresa = 1, bienvenida = 1 y token definido');
+      //                this.rootPage = this.dashboard;
+      //             }else{
+      //                // console.log('Estado empresa = 1 bienvenida = 1 y token indefinido');
+      //                this.rootPage = this.login;
+      //             }
+      //          });                   
 
-            });
+      //       });
             
-         });
+      //    });
 
-         if (this.platform.is("cordova")) {
-            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-         }
-      });
+      //    if (this.platform.is("cordova")) {
+      //       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      //    }
+      // });
+   }
+
+
+   irQR(){
+      this.nav.setRoot(PagoQrPage);
+      this.menuCtrl.close(); 
    }
 
    openPage(page:any) {
@@ -76,16 +79,6 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
 
    irNuevoProducto() {
       this.nav.push(SolicitupagoPage);
-      this.menuCtrl.close();
-   }
-
-   irProductos() {
-      this.nav.push(TiendaPage);
-      this.menuCtrl.close();
-   }
-
-   irAjustes() {
-      this.nav.setRoot(TabsAjustesPage);
       this.menuCtrl.close();
    }
 

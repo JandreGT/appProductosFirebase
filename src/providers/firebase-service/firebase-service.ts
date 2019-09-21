@@ -34,7 +34,7 @@ export class FirebaseServiceProvider {
          //Actualizamos la fruta con el id que recibimos del objeto del parametro
          this.afDB.database.ref('productos/'+fruit.id).set(fruit);
    }
-   public getFruit(id){
+   public getProduct(id){
          return this.afDB.object('productos/'+id).valueChanges();
          //Devolvera la fruta con el id que le pasamos por parametro
    }

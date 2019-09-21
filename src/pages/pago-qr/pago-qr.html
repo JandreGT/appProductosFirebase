@@ -3,49 +3,9 @@
 </ion-header>
 
 <ion-content padding class="bg_pagalo">
-  <ion-card *ngIf="logoEmpresa">
-    <ion-card-header>
-      <div class="ed-container full">
-        <div class="ed-item s-30 spi">
-          <div class="container_image">
-            <img class="image" [src]="logoEmpresa" alt="Logo Empresa">
-          </div>
-        </div>
-
-        <div class="ed-item s-70 spi spd">
-          <div class="description_header">
-            <h1>{{ nombreEmpesa }}</h1>
-            <p>{{ telefonoEmpresa }}</p>
-          </div>
-        </div>
-      </div>
-    </ion-card-header>
-
-    <ion-card-content>
-      <div class="ed-container full">
-        <div class="ed-item spd spi main-center cross-center">
-          <div class="container_qr">
-            <img [src]="_solicitudCtrl.qrEmpresa" alt="QR Empresa">
-          </div>
-        </div>
-
-        <div class="ed-item spd spi main-center cross-center">
-          <div class="description_footer">
-            <p>Haz que tu cliente escanee el código</p>
-            <p>para que pueda pagarte</p>
-          </div>
-        </div>
-      </div>
-    </ion-card-content>
-  </ion-card>
-
   <div class="ed-container full">
-    <div class="ed-item main-center cross-center">
-      <button ion-button class="btn_snacearqrapp no_margin" (click)="montoQr()">
-        Ingresar datos
-      </button>
-
-      <button ion-button icon-only class="btn_snacearqrapp" (click)="scanQr()">
+    <div class="ed-item main-center cross-center container_scan">
+      <button ion-button icon-only class="btn_scan" (click)="scanQr()">
         Escanear QR
         <ion-icon name="qr-scanner"></ion-icon>
       </button>

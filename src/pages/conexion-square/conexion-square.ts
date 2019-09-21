@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController, MenuController, Platform } from 'ionic-angular';
 
 // Plugins
-import { DataUserProvider, PosProvider, AuthProvider } from '../../providers/index.services';
+import { AuthProvider } from '../../providers/index.services';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { File } from '@ionic-native/file';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
@@ -38,29 +38,13 @@ export class ConexionSquarePage {
   @ViewChild(SignaturePad) public signaturePad: SignaturePad;
   firmaImage: String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController,
-              public _user:DataUserProvider, public _pos:PosProvider, public loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController, 
+              public loadingCtrl: LoadingController,
               public menuCtrl:MenuController, public bluetoothSerial:BluetoothSerial, public _auth:AuthProvider,
               private fileCtrl: File, public platform:Platform, public screenOrientation:ScreenOrientation) {
 
-    // bluetoothSerial.enable();
     this.datosTran = this.navParams.get("datosTran");
-    this.getDataUser();
     this.startScanning();
-  }
-
-  getDataUser() {
-    this._user.getUser().subscribe(resp => {
-      this.keysEmpresa = this._user.apikeyEmpresa
-      // console.log('LLaves Empresa: ', this.keysEmpresa);
-
-    }, error => {
-      this.alertCtrl.create({
-        title: 'Tu sesión ha expirado',
-        subTitle: error.mensaje,
-        buttons: ['OK']
-      }).present()
-    });
   }
 
   mostrarMenu() {
@@ -270,10 +254,6 @@ export class ConexionSquarePage {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     }
     // console.log('Json venta transaccion' + JSON.stringify(ventaTransaccionPos));
-
-    this._pos.sendSalePos(JSON.stringify(ventaTransaccionPos)).subscribe(() => {
-      loader.dismiss();
-    });
   }
 
   ionViewDidEnter() {

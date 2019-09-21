@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
-import { OpcionpagoPage } from '../index.page';
-import { NgForm } from '@angular/forms';
-import { DataUserProvider } from '../../providers/index.services';
+import { NgForm } from '@angular/forms'; 
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
-import { SolicitupagoPage } from '../solicitupago/solicitupago';
-import { SolicitudQrPage } from '../solicitud-qr/solicitud-qr';
+import { SolicitupagoPage } from '../solicitupago/solicitupago'; 
 
 @Component({
   selector: 'page-squere',
@@ -27,47 +24,10 @@ export class SquerePage {
   monedaUSD:boolean = false;
 
   constructor(public navCtrl: NavController, public actionCtrl: ActionSheetController,
-              public alertCtrl: AlertController, public _user:DataUserProvider,
+              public alertCtrl: AlertController, 
               public _auth:AuthProvider, public navParams:NavParams) {
-    this.getDataUser();
+ 
     this.tipoTran = this.navParams.get("tipo");
-  }
-
-  getDataUser() {
-    this._user.getUser().subscribe(resp => {
-      this.infoEmpresa = this._user.infoUser;
-      this.monedaEmpresa = this.infoEmpresa.empresa.banco
-
-      this.monedaEmpresa.forEach(element => {
-        if (element.moneda == 'GTQ') {
-          this.monedaGTQ = true;
-        } else if (element.moneda == 'USD') {
-          this.monedaUSD = true;
-        } else {
-          this.monedaGTQ = false;
-          this.monedaUSD = false;
-        }
-      });
-
-      if (this.monedaGTQ == true && this.monedaUSD == false) {
-        this.pago.monedaselec = 'GTQ'
-      } else if (this.monedaGTQ == false && this.monedaUSD == true) {
-        this.pago.monedaselec = 'USD'
-      } else if (this.monedaGTQ == true && this.monedaUSD == true) {
-        this.pago.monedaselec = 'GTQ'
-      } else {
-        this.bancosEmpresa = false;
-        this.alertaBancos();
-      }
-
-    }, error => {
-        this.alertCtrl.create({
-          title: 'Tu sesión ha expirado',
-          subTitle: error.mensaje,
-          buttons: [{ text: 'Ok' }]
-        }).present()
-        this.logout();
-    });
   }
 
   existePunto = false;
@@ -121,11 +81,11 @@ export class SquerePage {
       }
 
       if (this.tipoTran == 'pos') {
-        this.navCtrl.push(OpcionpagoPage, { 'datosTran': datoTran });
+         
       } else if (this.tipoTran == 'solicitud') {
         this.navCtrl.push(SolicitupagoPage, { 'datosTran': datoTran });
       } else if (this.tipoTran == 'montoQr') {
-        this.navCtrl.push(SolicitudQrPage, {'datosTran': datoTran})
+         
       } else {
         this.navCtrl.pop();
       }
@@ -141,7 +101,7 @@ export class SquerePage {
   }
 
   logout() {
-    this._auth.logout();
+    // this._auth.logout();
     this.navCtrl.setRoot(HomePage);
   }
 

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
-import { RegistroProvider, AuthProvider } from '../../providers/index.services';
+import { AuthProvider } from '../../providers/index.services';
 import { HomePage } from '../home/home';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -16,15 +16,10 @@ import { UserModel } from '../../models/user-model';
 export class RegistroAppPage {
   @ViewChild(Slides) slides: Slides;
 
-  userModel: UserModel;
-
-  user:any = {};
-  empresa:any = {};
+  userModel: UserModel; 
 
   imageURI: any;
   imagePreview: string = '';
-  dpiImage:boolean = false;
-  rtuImage:boolean = false;
 
   SelectImage: CameraOptions = {
     quality: 50,
@@ -40,17 +35,16 @@ export class RegistroAppPage {
     mediaType: this.camera.MediaType.PICTURE
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-              public alertCtrl:AlertController, public _rs:RegistroProvider, 
-              public loadingCtrl:LoadingController, public _auth:AuthProvider,
-              private camera:Camera,
+  constructor(public navCtrl: NavController,    public navParams: NavParams, 
+              public alertCtrl:AlertController, public loadingCtrl:LoadingController, 
+              public _auth:AuthProvider,         private camera:Camera,
               public AuthProvider: AuthProvider){
 
       this.userModel = new UserModel();
   }
 
    registrarUsuario(data:NgForm) {
-      let datos = data.value;
+      // let datos = data.value;
 
       if(this.userModel.email==undefined || this.userModel.password==undefined) {
          this.alertCtrl.create({
@@ -109,65 +103,12 @@ export class RegistroAppPage {
     });
   }
 
-  enviarDPI() {
-    let loader = this.loadingCtrl.create({ content: "Subiendo..." });
-    loader.present();
-    this._rs.subirDPI(this.imageURI).subscribe( () => {
-      loader.dismiss();
-      this.imageURI = '';
-      this.imagePreview = '';
-      this.dpiImage = true;
-      this.alertCtrl.create({
-        title: 'Envio Exitoso',
-        subTitle: 'Imagen enviada exitosamente',
-        buttons: ['OK']
-      }).present()
-    }, (err) => {
-      console.log(JSON.stringify(err));
-      loader.dismiss();
-      this.dpiImage = false;
-      this.alertCtrl.create({
-        title: 'Error al Subir imagen',
-        subTitle: err.mensaje,
-        buttons: ['OK']
-      }).present()
-    });
-  }
-
-  enviarRTU() {
-    let loader = this.loadingCtrl.create({ content: "Subiendo..." });
-    loader.present();
-    this._rs.subirRTU(this.imageURI).subscribe( () => {
-      loader.dismiss();
-      this.imageURI = '';
-      this.imageURI = '';
-      this.rtuImage = true;
-      this.alertCtrl.create({
-        title: 'Envio Exitoso',
-        subTitle: 'Imagen enviada exitosamente',
-        buttons: ['OK']
-      }).present()
-    }, (err) => {
-      console.log(JSON.stringify(err));
-      loader.dismiss();
-      this.rtuImage = false;
-      this.alertCtrl.create({
-        title: 'Error al Subir imagen',
-        subTitle: err.mensaje,
-        buttons: ['OK']
-      }).present()
-    });
-  }
-
   cancelUpload() {
     this.imagePreview = '';
-    this.imageURI = '';
-    this.dpiImage = false;
-    this.rtuImage = false;
+    this.imageURI = ''; 
   }
 
-  loguout() {
-    // this._auth.logout();
+  loguout() { 
     this.navCtrl.setRoot(HomePage);
   }
 }
