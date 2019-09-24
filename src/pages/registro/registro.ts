@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController,MenuController} from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { AuthProvider } from '../../providers/index.services';
@@ -10,8 +10,8 @@ import { UserModel } from '../../models/user-model';
 
 
 @Component({
-  selector: 'page-registro-app',
-  templateUrl: 'registro-app.html',
+  selector: 'page-registro',
+  templateUrl: 'registro.html',
 })
 export class RegistroAppPage {
   @ViewChild(Slides) slides: Slides;
@@ -38,7 +38,7 @@ export class RegistroAppPage {
   constructor(public navCtrl: NavController,    public navParams: NavParams, 
               public alertCtrl:AlertController, public loadingCtrl:LoadingController, 
               public _auth:AuthProvider,         private camera:Camera,
-              public AuthProvider: AuthProvider){
+              public AuthProvider: AuthProvider, public menu: MenuController){
 
       this.userModel = new UserModel();
   }
@@ -82,16 +82,20 @@ export class RegistroAppPage {
    }
 
    ingresar(){
+      // this.getGallery();return;
       this.navCtrl.push(HomePage);
    }
 
   getGallery() {
     let loader = this.loadingCtrl.create({ content: "Cargando..." });
     loader.present();
+
     this.camera.getPicture(this.SelectImage).then((imageData) => {
       loader.dismiss();
       this.imageURI = imageData;
       this.imagePreview = 'data:image/jpeg;base64,' + imageData;
+
+      console.log(this.imagePreview);
     }, (err) => {
       console.log(err);
       loader.dismiss();
@@ -103,12 +107,38 @@ export class RegistroAppPage {
     });
   }
 
-  cancelUpload() {
-    this.imagePreview = '';
-    this.imageURI = ''; 
+  
+   getImage() {
+      let loader = this.loadingCtrl.create({ content: "Cargando..." });
+      loader.present();
+      this.camera.getPicture(this.optionsImage).then((imageData) => {
+      loader.dismiss();
+      this.imageURI = imageData;
+      this.imagePreview = 'data:image/jpeg;base64,' + imageData;
+      }, (err) => {
+      console.log(err);
+      loader.dismiss();
+      this.alertCtrl.create({
+         title: 'Error al Abrir la camara',
+         subTitle: err,
+         buttons: ['OK']
+      }).present()
+      });
+   }
+  ionViewDidEnter() {
+    this.menu.enable(false);
   }
 
-  loguout() { 
-    this.navCtrl.setRoot(HomePage);
+  ionViewWillLeave() {
+    this.menu.enable(true);
   }
+
+   cancelUpload() {
+      this.imagePreview = '';
+      this.imageURI = ''; 
+   }
+
+   loguout() { 
+      this.navCtrl.setRoot(HomePage);
+   }
 }

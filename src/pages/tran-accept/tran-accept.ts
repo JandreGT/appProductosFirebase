@@ -11,6 +11,6 @@ export class TranAcceptPage {
   }
 
   closeModal(){
-    this.viewCtrl.dismiss();
+    // this.viewCtrl.dismiss();
   }
 }

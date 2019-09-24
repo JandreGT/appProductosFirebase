@@ -1,5 +1,9 @@
-page-registro-app {
-  
+page-registro {
+
+  ion-content{
+    background: url('../assets/imgs/fondo.jpg') no-repeat center;
+  }
+
   .ico_pagalo {
     float: left;
     width: 60px;
@@ -94,8 +98,8 @@ page-registro-app {
       }
 
       .input_registro {
-        background: #dadada;
-        border-radius: 10px;
+        background: #d4d4d4;
+        border-radius: 5px;
         padding: 0 10px;
       }
   }
@@ -129,8 +133,8 @@ page-registro-app {
     width: 80%;
     color: #fff;
     font-size: 20px;
-    border-radius: 15px;
-    background: linear-gradient(90deg,#5477f0 0%,#6c64ee) !important;
+    border-radius: 5px;
+    background: rgb(31, 31, 31);
   }
 
   .btn_cancelimg {

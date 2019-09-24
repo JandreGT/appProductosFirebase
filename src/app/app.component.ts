@@ -4,8 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
-import { HomePage, DashboardPage, SolicitupagoPage,PagoQrPage } from '../pages/index.page';
-import { AuthProvider } from '../providers/auth/auth';
+import { HomePage, DashboardPage, productoPage, PagoQrPage, ListProductPage } from '../pages/index.page';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
@@ -16,7 +15,7 @@ export class MyApp {
 @ViewChild(Nav) nav: Nav;
  
 login = HomePage;
-dashboard = SolicitupagoPage;
+dashboard = productoPage;
 
 rootPage: any;
 
@@ -36,34 +35,21 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
 
    initializeApp() {
 
-      this.rootPage = this.dashboard; return;
+      // this.rootPage = ListProductPage; return;
+      // this.rootPage = this.login; return;
+      // this.rootPage = productoPage; return 
 
-      // this.platform.ready().then(() => {
+      this.platform.ready().then(() => {
 
-      //    this.storage.ready().then(() => {
+         this.storage.ready().then(() => {
+            this.splashScreen.hide(); 
+            this.rootPage = this.login;
+         });
 
-      //       this.splashScreen.hide(); 
-
-      //       this.storage.get("stateApp").then(stateApp => {
-      
-      //          this.storage.get("token").then(token => {
-      //             if(token != undefined){
-      //                // console.log('Estado empresa = 1, bienvenida = 1 y token definido');
-      //                this.rootPage = this.dashboard;
-      //             }else{
-      //                // console.log('Estado empresa = 1 bienvenida = 1 y token indefinido');
-      //                this.rootPage = this.login;
-      //             }
-      //          });                   
-
-      //       });
-            
-      //    });
-
-      //    if (this.platform.is("cordova")) {
-      //       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-      //    }
-      // });
+         if (this.platform.is("cordova")) {
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+         }
+      });
    }
 
 
@@ -78,7 +64,12 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
    }
 
    irNuevoProducto() {
-      this.nav.push(SolicitupagoPage);
+      this.nav.push(productoPage);
+      this.menuCtrl.close();
+   }
+   
+   listadoProductos() {
+      this.nav.push(ListProductPage);
       this.menuCtrl.close();
    }
 

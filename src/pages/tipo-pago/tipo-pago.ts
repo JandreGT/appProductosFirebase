@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular'; 
-import { SolicitupagoPage } from '../solicitupago/solicitupago';
+import { SolicitupagoPage } from '../producto/producto';
 
 @Component({
   selector: 'page-tipo-pago',

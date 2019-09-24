@@ -6,3 +6,8 @@ https://www.nigmacode.com/ionic/Crud-ionic-firebase
 https://blog.ng-classroom.com/blog/tips/ionic-generator/
 
 https://es.stackoverflow.com/questions/136662/ionic-3-generando-apk-android
+
+ejemplo para subir imagenes en firebase
+https://github.com/ionicthemes/ionic-firebase-image-upload/tree/master/src/pages
+
+https://www.youtube.com/watch?v=urFpUVjLw0Y

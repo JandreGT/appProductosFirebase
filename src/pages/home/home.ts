@@ -4,8 +4,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ToastController } from 'ionic-angular';
 //Pages
-import { DashboardPage } from '../dashboard/dashboard';
-import { RegistroAppPage } from '../registro-app/registro-app';
+import { ListProductPage } from '../list-product/list-product';
+import { RegistroAppPage } from '../registro/registro';
 //Providers
 import { AuthProvider } from '../../providers/auth/auth';
 import { ScanData } from '../../models/scan-data.model'; 
@@ -19,7 +19,7 @@ import { UserModel } from '../../models/user-model';
 export class HomePage {
 
    userModel: UserModel;
-   email: string = "";
+   email: string = ""; 
    password: string = "";
    openRegistro:boolean = false;
 
@@ -52,7 +52,7 @@ export class HomePage {
       this.AuthProvider.signInWithEmailAndPassword(this.userModel).then(result => {
 
          loading.dismiss();
-         this.navCtrl.setRoot(DashboardPage);
+         this.navCtrl.setRoot(ListProductPage);
 
       }).catch(error => {
 

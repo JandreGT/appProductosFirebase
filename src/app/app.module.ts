@@ -16,13 +16,14 @@ import {
    SquerePage,
    ConexionSquarePage,
    TranAcceptPage,
-   SolicitupagoPage, 
+   productoPage, 
    SoliRejectPage,
    PagoQrPage,
    ModalProductoPage, 
    CarritoPage, 
    TipoPagoPage, 
-   RegistroAppPage 
+   RegistroAppPage,
+   ListProductPage
 } from '../pages/index.page'
 
 //Components
@@ -45,7 +46,9 @@ import { Camera } from '@ionic-native/camera';
 import { CardIO } from '@ionic-native/card-io';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import * as firebase from "firebase";
 import { 
    AngularFireDatabaseModule, 
    AngularFireDatabase 
@@ -58,16 +61,9 @@ import {
    FirebaseServiceProvider
 } from '../providers/index.services';
   
-//configuracion para firebase
-export const firebaseConfig  = {
-  apiKey: "AIzaSyD8TpquJDSu9NWQBdwAJdhWzsoDh_Sl8rM",
-  authDomain: "ventaqr-a51fc.firebaseapp.com",
-  databaseURL: "https://ventaqr-a51fc.firebaseio.com",
-  projectId: "ventaqr-a51fc",
-  storageBucket: "",
-  messagingSenderId: "31682504833",
-  appId: "1:31682504833:web:ff5cb1e4091c520a614580"
-};
+import { environment } from '../environments/environment';
+
+firebase.initializeApp(environment.firebase)
 
 @NgModule({
 
@@ -78,13 +74,14 @@ export const firebaseConfig  = {
       DashboardPage,
       ConexionSquarePage,
       TranAcceptPage,
-      SolicitupagoPage, 
+      productoPage, 
       SoliRejectPage,
       PagoQrPage, 
       ModalProductoPage,
       CarritoPage,
       TipoPagoPage, 
       RegistroAppPage, 
+      ListProductPage,
       //components
       DetalleTransaccionComponent,
       ModalImageComponent
@@ -105,7 +102,8 @@ export const firebaseConfig  = {
          autoFocusAssist: false
       }),
       IonicStorageModule.forRoot(),
-      AngularFireModule.initializeApp(firebaseConfig),
+      AngularFireModule.initializeApp(environment.firebase), 
+      AngularFireStorageModule,
       AngularFireAuthModule,
       AngularFireDatabaseModule
   ],
@@ -117,13 +115,14 @@ export const firebaseConfig  = {
       SquerePage,
       ConexionSquarePage, 
       TranAcceptPage, 
-      SolicitupagoPage, 
+      productoPage, 
       SoliRejectPage, 
       PagoQrPage, 
       ModalProductoPage,
       CarritoPage,
       TipoPagoPage,
       RegistroAppPage,  
+      ListProductPage,
       DetalleTransaccionComponent, 
       ModalImageComponent
    ],

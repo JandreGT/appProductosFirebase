@@ -3,7 +3,7 @@ import { NavController, NavParams, ActionSheetController, AlertController } from
 import { NgForm } from '@angular/forms'; 
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
-import { SolicitupagoPage } from '../solicitupago/solicitupago'; 
+import { SolicitupagoPage } from '../producto/producto'; 
 
 @Component({
   selector: 'page-squere',

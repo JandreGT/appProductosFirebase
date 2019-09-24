@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import * as firebase from "firebase";
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs-compat';
 
@@ -14,7 +16,7 @@ import { Observable } from 'rxjs-compat';
 @Injectable()
 export class FirebaseServiceProvider {
 
-   constructor(public afDB: AngularFireDatabase) {
+   constructor(public afDB: AngularFireDatabase, private afStorage:AngularFireStorage) {
       
    }
 
@@ -30,9 +32,9 @@ export class FirebaseServiceProvider {
       return this.afDB.database.ref('productos/'+fruit.id).set(fruit);
    }
 
-   public updateFruit(fruit){
+   public updateProducto(prod){
          //Actualizamos la fruta con el id que recibimos del objeto del parametro
-         this.afDB.database.ref('productos/'+fruit.id).set(fruit);
+         this.afDB.database.ref('productos/'+prod.id).set(prod);
    }
    public getProduct(id){
          return this.afDB.object('productos/'+id).valueChanges();

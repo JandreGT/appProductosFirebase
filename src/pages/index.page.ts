@@ -1,12 +1,13 @@
-export { RegistroAppPage } from './registro-app/registro-app';
+export { RegistroAppPage } from './registro/registro';
 export { TipoPagoPage } from './tipo-pago/tipo-pago';
 export { ModalProductoPage } from './components/modal-producto/modal-producto';
 export { CarritoPage } from './components/carrito/carrito';
 export { DashboardPage } from './dashboard/dashboard';
 export { PagoQrPage } from './pago-qr/pago-qr';
 export { SoliRejectPage } from './soli-reject/soli-reject';
-export { SolicitupagoPage } from './solicitupago/solicitupago'; 
+export { productoPage } from './producto/producto'; 
 export { TranAcceptPage } from './tran-accept/tran-accept';
 export { ConexionSquarePage } from './conexion-square/conexion-square';
 export { SquerePage } from './squere/squere';
 export { HomePage } from "./home/home";
+export { ListProductPage } from "./list-product/list-product";

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController,AlertController} from 'ionic-angular';
+import { Platform, NavController,AlertController, MenuController} from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ToastController } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -13,12 +13,12 @@ import { FirebaseServiceProvider } from '../../providers/index.services';
 })
 export class PagoQrPage {
 
-  producto:any;
+  producto:any = {};
 
   constructor(private barcodeScanner: BarcodeScanner, private toastCtrl: ToastController,
               private platform:Platform,              private iab:InAppBrowser, 
               public navCtrl:NavController,           public FirebaseServiceProvider:FirebaseServiceProvider,
-              public alertCtrl:AlertController,) {
+              public alertCtrl:AlertController,       public menuCtrl:MenuController) {
     this.scanQr();
   }
   
@@ -32,7 +32,7 @@ export class PagoQrPage {
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Result: ', barcodeData.text);
       console.log('Format: ', barcodeData.format);
-      console.log('Canceled: ', barcodeData.cancelled);
+      // console.log('Canceled: ', barcodeData.cancelled);
 
       if (barcodeData.cancelled == false && barcodeData.text != null) {
         let data = new ScanData(barcodeData.text);
@@ -47,16 +47,8 @@ export class PagoQrPage {
             this.FirebaseServiceProvider.getProduct(barcodeData.text)
               .subscribe(producto=>{
                  this.producto = producto;
-
-                 this.alertCtrl.create({
-                  title: 'Producto',
-                  subTitle: this.producto.nombre+" tiene un precio de " +this.producto.precio,
-                  buttons: ['OK']
-               }).present()
-
             }); 
-            
-            // this.presentToast(this.producto);
+             
           break;
         }
       } else {
@@ -81,6 +73,10 @@ export class PagoQrPage {
 
   logout() { 
     this.navCtrl.setRoot(HomePage);
+  }
+
+  mostrarMenu(){
+    this.menuCtrl.toggle();
   }
 
 }

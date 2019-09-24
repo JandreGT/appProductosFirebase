@@ -1,14 +1,37 @@
 <ion-header>
-  <ion-navbar padding></ion-navbar>
+	<ion-navbar hideBackButton="true" padding>
+		<div class="container__butonhead">
+			<ion-buttons start>
+			<button ion-button icon-only (click)="mostrarMenu()">
+				<ion-icon name="menu" color="blanco"></ion-icon>
+			</button>
+			</ion-buttons>
+		</div>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding class="bg_pagalo">
-  <div class="ed-container full">
-    <div class="ed-item main-center cross-center container_scan">
-      <button ion-button icon-only class="btn_scan" (click)="scanQr()">
-        Escanear QR
-        <ion-icon name="qr-scanner"></ion-icon>
-      </button>
-    </div>
-  </div>
+	<ion-col col-12>
+		<div class="card_container">
+
+			<div class="card_body">
+				<div class="card_title">
+					<p>{{producto.nombre}}</p>
+				</div>
+				<div class="card_price">
+					<p>Q {{ producto.precio | number:'.2-2' }} </p>
+				</div>
+				
+				<div class="card_price">
+					<p> {{ producto.descripcion }} </p>
+					<!-- <p> exitencia: {{ producto.cantidad }} </p> -->
+				</div>
+			</div>
+
+			<div class="card_header">
+				<img *ngIf="producto.imagen != ''" [src]="producto.imagen">
+				<div class="bg_imageprod" *ngIf="producto.imagen == ''"> {{ producto.nombre | slice:0:1 }} </div>
+			</div>
+		</div>
+	</ion-col>
 </ion-content>

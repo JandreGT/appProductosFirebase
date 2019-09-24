@@ -4,7 +4,19 @@
 
 export const environment = {
   production: false,
+
+  firebase: {
+    apiKey: "AIzaSyD8TpquJDSu9NWQBdwAJdhWzsoDh_Sl8rM",
+    authDomain: "ventaqr-a51fc.firebaseapp.com",
+    databaseURL: "https://ventaqr-a51fc.firebaseio.com",
+    projectId: "ventaqr-a51fc",
+    storageBucket: "gs://ventaqr-a51fc.appspot.com/",
+    messagingSenderId: "31682504833",
+    appId: "1:31682504833:web:ff5cb1e4091c520a614580"
+  }
+
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

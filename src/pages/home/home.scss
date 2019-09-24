@@ -67,21 +67,19 @@ page-home {
     margin-top: 20px;
 
     .border_inputc {
-      border-radius: 10px 10px 0 0;
+      border-radius: 5px;
       padding-left: 0;
-      border-bottom: 1px solid color($colors,rojo);
     }
 
     .border_inputp {
-      border-radius: 0 0 10px 10px;
+      border-radius: 5px;
       padding-left: 0;
     }
 
     .text_input {
-      padding: 5px 10px;
-      font-family: $source;
-      font-weight: normal;
-      color: #000;
+      background: #d4d4d4;
+      border-radius: 5px;
+      padding: 0 10px;
     }
 
     .tex_contra {
@@ -105,11 +103,11 @@ page-home {
       justify-content: center;
 
         .btn_login {
-          width: 100%;
+          width: 80%;
           margin-top: 40px;
-          color: #ff6567;
+          color: #fff;
           border-radius: 0.5rem;
-          background: #fff;
+          background: rgb(31, 31, 31);;
         }
 
         .btn_scanqr {
@@ -136,4 +134,8 @@ page-home {
     padding: 0 !important;
     border-bottom: none !important;
   }
+}
+
+.item-ios{
+  background: transparent !important;
 }

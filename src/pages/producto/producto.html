@@ -1,0 +1,53 @@
+<ion-header>
+   <ion-navbar>
+      <ion-buttons right>
+         <!-- <button ion-button outline class="btn_salir" (click)="loguout()">Salir</button> -->
+      </ion-buttons>
+   </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+   <div class="container_box">
+      <div class="box_nuevo_producto">
+         <form #formProducto="ngForm" class="form_pago" (ngSubmit)="productoCreate(formProducto)">
+
+            <label class="label">Nombre:</label>
+            <ion-item class="spd spi">
+               <ion-input type="text" autocorrect="on" class="input_pago" placeholder="Nombre del producto" name="nombre"
+               [(ngModel)]="crearProducto.nombre" required #nombre="ngModel"></ion-input>
+            </ion-item>
+
+            <label class="label">Precio:</label>
+            <ion-item class="spd spi">
+               <ion-input type="number" class="input_pago" placeholder="Precio del producto" name="precio"
+               [(ngModel)]="crearProducto.precio" required #precio="ngModel"></ion-input>
+            </ion-item>
+           
+            <label class="label">Cantidad:</label>
+            <ion-item class="spd spi">
+               <ion-input type="number" class="input_pago" placeholder="Cantidad del producto" name="cantidad"
+               [(ngModel)]="crearProducto.cantidad" required #cantidad="ngModel"></ion-input>
+            </ion-item>
+            
+            <label class="label">Descripción :</label>
+            <ion-item>
+               <ion-textarea class="input_pago" placeholder="Descripción del producto" rows=3 name="descripcion" [(ngModel)]="crearProducto.descripcion" required></ion-textarea>
+            </ion-item>
+
+
+            <ion-item *ngIf="imagePreview != ''">
+               <img [src]="imagePreview" class="img_preview">
+            </ion-item>
+
+            <div class="container_scan">
+               <a class="btn_scan" (click)="getImage()">Foto</a>
+            </div>
+
+            <div class="container_scan">
+               <button ion-button class="btn_scan" [disabled]="formProducto.invalid" type="submit">Guardar</button>
+            </div>          
+         </form>
+      </div>
+   </div>
+</ion-content>

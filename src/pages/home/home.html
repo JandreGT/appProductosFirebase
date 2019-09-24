@@ -2,7 +2,7 @@
 
   <div class="center_container">
     <div class="titulo">
-      <h1>Inicio de sesion</h1>
+      <h3>Ingresar a la APP</h3>
     </div>
 
     <form class="form-login" (ngSubmit)="login()">
@@ -10,15 +10,16 @@
         <ion-input type="email" [(ngModel)]="userModel.email" name="email" class="text_input" placeholder="Usuario"></ion-input>
       </ion-item>
 
+      <br>
       <ion-item class="border_inputp">
         <ion-input type="password" [(ngModel)]="userModel.password" name="password" class="text_input" placeholder="Contraseña"></ion-input>
       </ion-item>
       
       <div class="button_container">
-        <button ion-button class="btn_login" type="submit" >Entrar</button>
+        <button ion-button class="btn_login" type="submit" >Ingresar</button>
       </div>
 
-      <p class="tex_contra" (click)="registro()">Registro</p>
+      <p class="tex_contra" (click)="registro()">REGISTRO</p>
       
     </form>
 
