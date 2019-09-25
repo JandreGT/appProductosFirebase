@@ -12,16 +12,12 @@ import { MyApp } from './app.component';
 //Pages
 import { 
    HomePage, 
-   DashboardPage,
-   SquerePage,
-   ConexionSquarePage,
+   DashboardPage, 
    TranAcceptPage,
    productoPage, 
    SoliRejectPage,
    PagoQrPage,
    ModalProductoPage, 
-   CarritoPage, 
-   TipoPagoPage, 
    RegistroAppPage,
    ListProductPage
 } from '../pages/index.page'
@@ -50,8 +46,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import * as firebase from "firebase";
 import { 
-   AngularFireDatabaseModule, 
-   AngularFireDatabase 
+   AngularFireDatabaseModule
 } from '@angular/fire/database'; 
 
 //Providers
@@ -69,17 +64,13 @@ firebase.initializeApp(environment.firebase)
 
    declarations: [
       MyApp, 
-      HomePage,
-      SquerePage,
-      DashboardPage,
-      ConexionSquarePage,
+      HomePage, 
+      DashboardPage, 
       TranAcceptPage,
       productoPage, 
       SoliRejectPage,
       PagoQrPage, 
-      ModalProductoPage,
-      CarritoPage,
-      TipoPagoPage, 
+      ModalProductoPage, 
       RegistroAppPage, 
       ListProductPage,
       //components
@@ -111,16 +102,12 @@ firebase.initializeApp(environment.firebase)
    entryComponents:[
       MyApp,
       HomePage,
-      DashboardPage,
-      SquerePage,
-      ConexionSquarePage, 
+      DashboardPage, 
       TranAcceptPage, 
       productoPage, 
       SoliRejectPage, 
       PagoQrPage, 
-      ModalProductoPage,
-      CarritoPage,
-      TipoPagoPage,
+      ModalProductoPage, 
       RegistroAppPage,  
       ListProductPage,
       DetalleTransaccionComponent, 

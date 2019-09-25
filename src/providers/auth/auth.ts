@@ -1,13 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User} from 'firebase/app';
-// import { User, Promise } from 'firebase/app';
-
 import { UserModel } from '../../models/user-model';
-
-
 
 /*
   Generated class for the AuthProvider provider.

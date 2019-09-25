@@ -3,10 +3,8 @@ import { Platform, Nav, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
 import { HomePage, DashboardPage, productoPage, PagoQrPage, ListProductPage } from '../pages/index.page';
-import { Storage } from '@ionic/storage';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Storage } from '@ionic/storage'; 
 
 @Component({
    templateUrl: 'app.html'
@@ -22,8 +20,7 @@ rootPage: any;
 pages: Array<{ title: string, component: any }>;
 
 constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-            public storage: Storage, public menuCtrl: MenuController, public screenOrientation: ScreenOrientation,
-            private iab: InAppBrowser) {
+            public storage: Storage, public menuCtrl: MenuController, public screenOrientation: ScreenOrientation) {
 
    this.initializeApp();
    statusBar.styleLightContent();
@@ -34,10 +31,6 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
 }
 
    initializeApp() {
-
-      // this.rootPage = ListProductPage; return;
-      // this.rootPage = this.login; return;
-      // this.rootPage = productoPage; return 
 
       this.platform.ready().then(() => {
 
@@ -72,12 +65,7 @@ constructor(public platform: Platform, public statusBar: StatusBar, public splas
       this.nav.push(ListProductPage);
       this.menuCtrl.close();
    }
-
-   irPagalo() {
-      console.log('pagalo');
-      this.iab.create('https://app.pagalocard.com/', '_system', 'location=yes');
-   }
-
+   
    reset() {
       this.menuCtrl.close(); 
    }

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.pagalo.start" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Pagalo</name>
-    <description>App para realizar cobros</description>
-    <author email="ocruz@jupi.tech" href="https://jupi.tech/">Osman Cruz</author>
+<widget id="io.invetarios.start" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Inventarios</name>
+    <description>Inventarios</description>
+    <author email="jose.coloj@gmail.com" href="#">Jose Coloj</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -47,7 +47,7 @@
             <string>This app requires Bluetooth to connect to our hardware.</string>
         </config-file>
         <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
-            <string>Permita que Pagalo acceda a su camara para poder scanear codigos QR.</string>
+            <string>Acceso a su camara para poder scanear codigos QR.</string>
         </config-file>
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />

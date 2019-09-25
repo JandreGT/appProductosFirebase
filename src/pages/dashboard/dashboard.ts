@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController, AlertController } from 'ionic-angular';
-import { SquerePage } from '../squere/squere';
+import { NavController, MenuController, AlertController } from 'ionic-angular'; 
 import { AuthProvider} from '../../providers/index.services';
 import { HomePage } from '../home/home';
 import { PagoQrPage } from '../pago-qr/pago-qr'; 
@@ -22,30 +21,6 @@ export class DashboardPage {
   }
 
   irVentas() { 
-  }
-
-  irSquare(tipoCobro:string) {
-    switch (tipoCobro) {
-      case "pos":
-        this.navCtrl.push(SquerePage, { 'tipo': tipoCobro });
-      break;
-
-      case "solicitud":
-        this.navCtrl.push(SquerePage, { 'tipo': tipoCobro });
-      break;
-
-      case "cobroQr":
-        this.navCtrl.push(SquerePage, { 'tipo': tipoCobro });
-      break;
-
-      default:
-        this.alertCtrl.create({
-          title: 'Error',
-          subTitle: 'Selecciona una opción de pago valida.',
-          buttons: ['Ok']
-        }).present()
-        break;
-    }
   }
 
   irQr() {

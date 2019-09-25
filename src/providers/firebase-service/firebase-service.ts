@@ -1,11 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import * as firebase from "firebase";
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs-compat';
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -16,7 +10,7 @@ import { Observable } from 'rxjs-compat';
 @Injectable()
 export class FirebaseServiceProvider {
 
-   constructor(public afDB: AngularFireDatabase, private afStorage:AngularFireStorage) {
+   constructor(public afDB: AngularFireDatabase) {
       
    }
 
